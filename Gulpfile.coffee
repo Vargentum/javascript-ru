@@ -32,7 +32,6 @@ gulp.task 'javascript', ->
       presets: ['es2015']
     ))
     .pipe($.sourcemaps.write())
-    .pipe($.concat('javascript.js'))
     .pipe(gulp.dest('./app'))
     .pipe($.livereload())
 

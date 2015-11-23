@@ -27,10 +27,10 @@ var g = function(arg) { /*...*/ };
 
 
 
-alert("a" in window); // true,  т.к. есть свойство window.a
-alert(a); // равно undefined,  присваивание будет выполнено далее
-alert(f); // function ...,  готовая к выполнению функция
-alert(g); // undefined, т.к. это переменная, а не Function Declaration
+var result = ("a" in window); // true,  т.к. есть свойство window.a
+var result = (a); // равно undefined,  присваивание будет выполнено далее
+var result = (f); // function ...,  готовая к выполнению функция
+var result = (g); // undefined, т.к. это переменная, а не Function Declaration
 
 var a = 5;
 function f() { /*...*/ }

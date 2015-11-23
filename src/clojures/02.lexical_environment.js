@@ -1,8 +1,8 @@
 function sayHi(name) {
   var phrase = "Привет, " + name;
-  alert( phrase );
+  return phrase
 }
-sayHi('Вася');
+var result = sayHi('Вася');
 
 
 /*Stage 1: function initialization
@@ -13,9 +13,9 @@ sayHi('Вася');
 function sayHi(name) {
   // LexicalEnvironment = { name: 'Вася', phrase: undefined }
   var phrase = "Привет, " + name;
-  alert( phrase );
+  return phrase
 }
-sayHi('Вася');
+var result = sayHi('Вася');
 
 
 
@@ -27,10 +27,10 @@ function sayHi(name) {
   var phrase = "Привет, " + name;
 
   // LexicalEnvironment = { name: 'Вася', phrase: 'Привет, Вася'}
-  alert( phrase );
+  return phrase
 }
 
-sayHi('Вася');
+var result = sayHi('Вася');
 
 
 /*Stage 3: garbage collection
@@ -109,7 +109,7 @@ say('Вася'); // Что выведет? Не будет ли ошибки?
 var phrase = 'Привет';
 
 function say(name) {
-  alert( name + ", " + phrase );
+  return (name + ", " + phrase);
 }
 
 /*Решение: вернет 'Вася, undefined'. Ошибки не будет, т.к. переменная phrase инициализирована со значением undefined.
@@ -130,7 +130,7 @@ function f() {
   } else {
     var value = false;
   }
-  alert( value );
+  return value;
 }
 f();
 
@@ -148,9 +148,11 @@ f();
 */
 
 function test() {
-  alert( window );
+  var result;
+  result = window;
+  
   var window = 5;
-  alert( window );
+  result = window;
 }
 test();
 
@@ -173,7 +175,7 @@ test();
 var a = 5
 
 (function() {
-  alert(a)
+  return a;
 })()
 
 
@@ -222,11 +224,11 @@ function makeCounter() {
 var counter = makeCounter();
 var counter2 = makeCounter();
 
-alert( counter() ); // ?
-alert( counter() ); // ?
+counter(); // ?
+counter(); // ?
 
-alert( counter2() ); // ?
-alert( counter2() ); // ?
+counter2(); // ?
+counter2(); // ?
 
 /*Решение: 1 2 3 4. Потому что для обеих счетчиков будет использоваться одна и та же переменная currentCount.*/
 

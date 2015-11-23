@@ -7,7 +7,7 @@ a = ['x'] === 'x'  //true
 
 
 
-/*Задача 2: что выведет alert?*/
+/*Задача 2: что выведет?*/
 var foo = {
   toString: function() {
     return 'foo';
@@ -17,9 +17,9 @@ var foo = {
   }
 };
 
-alert( foo );
-alert( foo + 1 );
-alert( foo + "3" );
+var result = foo;
+var result = foo + 1;
+var result = foo + "3";
 
 /*Решение:
 1. выведется значение foo.toString() -> 'foo'
@@ -31,8 +31,8 @@ alert( foo + "3" );
 
 
 /*Задача 3: почему?*/
-alert( [] == [] ); // false
-alert( [] == ![] ); // true
+var result = [] == []; // false
+var result = [] == ![]; // true
 
 /*Решение:
 1. объекты равны только когда это один и тот же объект. Два пустых массива - разные, поэтому неравны

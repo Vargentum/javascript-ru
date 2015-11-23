@@ -95,7 +95,7 @@ triple(10) // 30
 /*Задача 1: что выведет функция? */
 
 function f() {
-  alert( this );
+  return this;
 }
 
 var user = {
@@ -111,7 +111,7 @@ user.g();
 
 /*Задача 2 (двойной bind): что выведет функция? */
 function f() {
-  alert(this.name);
+  return this.name;
 }
 
 f = f.bind( {name: "Вася"} ).bind( {name: "Петя" } );
@@ -126,16 +126,16 @@ f();
 
 /*Задача 3 свойство после bind: */
 function sayHi() {
-  alert( this.name );
+  return this.name;
 }
 sayHi.test = 5;
-alert( sayHi.test ); // 5
+var result = sayHi.test; // 5
 
 var bound = sayHi.bind({
   name: "Вася"
 });
 
-alert( bound.test ); // что выведет? почему?
+result = bound.test; // что выведет? почему?
 
 
 /*Решение: undefined, т.к bound возвращает не sayHi, в которой есть свойство test
@@ -174,11 +174,11 @@ var user = {
   password: '12345',
 
   loginOk: function() {
-    alert( this.login + ' вошёл в сайт' );
+    return this.login + ' вошёл в сайт';
   },
 
   loginFail: function() {
-    alert( this.login + ': ошибка входа' );
+    return this.login + ': ошибка входа';
   },
 
   checkPassword: function() {
@@ -218,7 +218,7 @@ var user = {
 
   // метод для вызова из ask
   loginDone: function(result) {
-    alert( this.login + (result ? ' вошёл в сайт' : ' ошибка входа') );
+    return this.login + (result ? ' вошёл в сайт' : ' ошибка входа');
   },
 
   checkPasswordIncorrect: function() { // исправить здесь

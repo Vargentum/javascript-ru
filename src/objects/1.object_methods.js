@@ -120,7 +120,7 @@ var ladder = {
     return this;
   },
   showStep: function() { // вывести текущую ступеньку
-    alert( this.step );
+    // console.log(this.step);
     return this;
   }
 };
