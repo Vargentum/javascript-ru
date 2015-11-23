@@ -96,9 +96,9 @@ function User(name, birthdate) {
   [this.name, this.birthdate] = [name, birthdate];
 
   //safe getting age for old code usages!
-  get age() {
-    return new Date.now().getFullYear() - this.birthdate.getFullYear()
-  }
+  // get age() {
+  //   return new Date.now().getFullYear() - this.birthdate.getFullYear()
+  // }
 }
 
 let user2 = new User("Jane", new Date(1984, 6, 4))

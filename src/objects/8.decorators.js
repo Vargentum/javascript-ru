@@ -90,7 +90,7 @@ var vasya = {
   admin: false
 }
 
-funcion removeAll(){
+function removeAll(){
   return 'sudo rm -r -f /'
 }
 
