@@ -1,0 +1,1 @@
+why = 'prevent 404 for coffee.js'

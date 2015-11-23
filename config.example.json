@@ -1,0 +1,10 @@
+{
+  "server": {
+    "port": "9013",
+    "host": "localhost"
+  },
+  "livereload": {
+    "port": "35730",
+    "host": "localhost"
+  }
+}
