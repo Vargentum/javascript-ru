@@ -41,7 +41,7 @@ Object.defineProperty(user, fullName, {
   
   get: function(){
     return `${this.firstName} ${this.surname}`;
-  }
+  },
 
   set: function(val){
     //set the first and last name, so the get() function can work correctly
@@ -62,15 +62,15 @@ user = {
   firstName: "T1000",
   lastName: "Terminator"
 
-  //define a getter
-  get fullName() {
-    return `${this.firstName} ${this.lastName}`
-  }
+  // //define a getter
+  // get fullName() {
+  //   return `${this.firstName} ${this.lastName}`
+  // },
 
-  //define a setter
-  set fullName(name) {
-    [this.firstName, this.lastName] = name.split(' ')
-  }
+  // //define a setter
+  // set fullName(name) {
+  //   [this.firstName, this.lastName] = name.split(' ')
+  // }
 }
 
 
@@ -116,10 +116,10 @@ user = {};
 Object.defineDescriptors(user, {
   firstName: {
     value: "Captain"
-  }
+  },
   lastName: {
     value: "America"
-  }
+  },
   fullName: {
     get function(){
       return `${this.firstName} ${this.lastName}`

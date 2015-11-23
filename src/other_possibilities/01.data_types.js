@@ -7,9 +7,8 @@ function sayHi(who) {
     //   console.log "Привет: " + who[i];
     // }
     who.forEach(sayHi) // изящнее с помощью рекурсии
-    else {
-      console.log "Привет: " + who
-    }
+  } else {
+    console.log("Привет: " + who)
   }
 }
 
@@ -18,10 +17,9 @@ function sayHi(who) {
 function sayHi(who) {
 
   if (who.forEach) { //eсли существует forEach - предполагаем что данные правильные
-    who.forEach(sayHi)
-    else {
-      console.log "Привет: " + who
-    }
+    who.forEach(sayHi)  
+  }  else {
+    console.log("Привет: " + who)
   }
 }
 

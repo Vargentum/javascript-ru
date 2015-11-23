@@ -2,8 +2,8 @@
 */
 
 //Syntax
-func.call(context, arg1,arg2 ..., argN);
-func.apply(context, [arg1, arg2, ..., argN]);
+// func.call(context, arg1,arg2 ..., argN);
+// func.apply(context, [arg1, arg2, ..., argN]);
 
 
 //Simple example

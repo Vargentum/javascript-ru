@@ -21,17 +21,18 @@ var sum = function (argument) {
 
 // Anonymous function
 
-function(){ /*do smth*/ }
+// function(){ /*do smth*/ }
 
 
 
 /*Function constructor*/
 
-new Function(params, code)
+// new Function(params, code)
 //params - string
 //code - string
 
-var sum = new Function('a,b' 'return a+b;')
+// ****
+// var sum = new Function('a,b' 'return a+b;')
 
 
 /*Зачем: конструирование функций, код которых неизвестен, но строка с ним генерируется или

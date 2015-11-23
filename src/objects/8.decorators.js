@@ -150,10 +150,10 @@ var a, b;
 
 a = f(1);
 b = f(1);
-console.log( a == b ); // true (значение закешировано)
+console.log( a === b ); // true (значение закешировано)
 
 b = f(2);
-console.log( a == b ); // false, другой аргумент => другое значение
+console.log( a === b ); // false, другой аргумент => другое значение
 
 
 
@@ -196,7 +196,7 @@ for (var i = 0; i < log.length; i++) {
 /*ПОВТОРЕНИЕ: логирующий декоратор с мульти-параметрами*/
 
 function work(a, b) {
-  return a + ; // work - произвольная функция
+  return a + b; // work - произвольная функция
 }
 
 function makeLogging(f, log) {
@@ -262,9 +262,9 @@ var a, b;
 
 a = f(1);
 b = f(1);
-console.log( a == b ); // true (значение закешировано)
+console.log( a === b ); // true (значение закешировано)
 
 b = f(2);
-console.log( a == b ); // false, другой аргумент => другое значение
+console.log( a === b ); // false, другой аргумент => другое значение
 
 
