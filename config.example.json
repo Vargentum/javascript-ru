@@ -4,7 +4,7 @@
     "host": "localhost"
   },
   "livereload": {
-    "port": "35730",
+    "port": "35729",
     "host": "localhost"
   }
 }
