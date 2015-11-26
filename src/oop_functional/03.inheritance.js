@@ -507,7 +507,7 @@ function task5() {
   fridge.addFood("кус-кус");
   fridge.disable(); // ошибка, в холодильнике есть еда
 }
-task5()
+// task5()
 
 
 
