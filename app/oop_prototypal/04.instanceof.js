@@ -1,0 +1,52 @@
+"use strict";
+
+/*Task 1: why instanceof retuns true?
+
+Answer: because Constructor not take part in equality checking
+only prototype takes. 
+And prototype of A and prototype of B constructors, has 
+reference to single empty object. So
+a instaceof A -> true
+a instaceof B -> true
+
+*/
+
+function task1() {
+  function A() {}
+  function B() {}
+
+  A.prototype = B.prototype = {};
+
+  var a = new A();
+
+  console.log(a instanceof A); // true
+  console.log(a instanceof B); // true
+}
+// task1()
+
+/*Task 2: what and why console logs?
+Answer: 
+  1. false, because Rabbit.prototype.constructor is Animal
+  To prevent this, set constructor explicitly
+  Rabbit.prototype.constructor = Rabbit
+  (incorrect: result is true, because constructor not used equality checking
+  only prototype: remember for future)
+
+  2. true, see answer 1
+  3. true, because all functions are objects
+*/
+
+function task2() {
+  function Animal() {}
+
+  function Rabbit() {}
+  Rabbit.prototype = Object.create(Animal.prototype);
+
+  var rabbit = new Rabbit();
+
+  console.log(rabbit instanceof Rabbit); //false
+  console.log(rabbit instanceof Animal); //true
+  console.log(rabbit instanceof Object); //true
+}
+task2();
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIjA0Lmluc3RhbmNlb2YuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7OztBQVdBLFNBQVMsS0FBSyxHQUFJO0FBQ2hCLFdBQVMsQ0FBQyxHQUFHLEVBQUU7QUFDZixXQUFTLENBQUMsR0FBRyxFQUFFOztBQUVmLEdBQUMsQ0FBQyxTQUFTLEdBQUcsQ0FBQyxDQUFDLFNBQVMsR0FBRyxFQUFFLENBQUM7O0FBRS9CLE1BQUksQ0FBQyxHQUFHLElBQUksQ0FBQyxFQUFFLENBQUM7O0FBRWhCLFNBQU8sQ0FBQyxHQUFHLENBQUUsQ0FBQyxZQUFZLENBQUMsQ0FBRTtBQUFDLEFBQzlCLFNBQU8sQ0FBQyxHQUFHLENBQUUsQ0FBQyxZQUFZLENBQUMsQ0FBRTtBQUFDLENBQy9COzs7Ozs7Ozs7Ozs7Ozs7QUFBQSxBQWtCRCxTQUFTLEtBQUssR0FBSTtBQUNoQixXQUFTLE1BQU0sR0FBRyxFQUFFOztBQUVwQixXQUFTLE1BQU0sR0FBRyxFQUFFO0FBQ3BCLFFBQU0sQ0FBQyxTQUFTLEdBQUcsTUFBTSxDQUFDLE1BQU0sQ0FBQyxNQUFNLENBQUMsU0FBUyxDQUFDLENBQUM7O0FBRW5ELE1BQUksTUFBTSxHQUFHLElBQUksTUFBTSxFQUFFLENBQUM7O0FBRTFCLFNBQU8sQ0FBQyxHQUFHLENBQUUsTUFBTSxZQUFZLE1BQU0sQ0FBRTtBQUFDLEFBQ3hDLFNBQU8sQ0FBQyxHQUFHLENBQUUsTUFBTSxZQUFZLE1BQU0sQ0FBRTtBQUFDLEFBQ3hDLFNBQU8sQ0FBQyxHQUFHLENBQUUsTUFBTSxZQUFZLE1BQU0sQ0FBRTtBQUFDLENBQ3pDO0FBQ0QsS0FBSyxFQUFFLENBQUEiLCJmaWxlIjoib29wX3Byb3RvdHlwYWwvMDQuaW5zdGFuY2VvZi5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qVGFzayAxOiB3aHkgaW5zdGFuY2VvZiByZXR1bnMgdHJ1ZT9cblxuQW5zd2VyOiBiZWNhdXNlIENvbnN0cnVjdG9yIG5vdCB0YWtlIHBhcnQgaW4gZXF1YWxpdHkgY2hlY2tpbmdcbm9ubHkgcHJvdG90eXBlIHRha2VzLiBcbkFuZCBwcm90b3R5cGUgb2YgQSBhbmQgcHJvdG90eXBlIG9mIEIgY29uc3RydWN0b3JzLCBoYXMgXG5yZWZlcmVuY2UgdG8gc2luZ2xlIGVtcHR5IG9iamVjdC4gU29cbmEgaW5zdGFjZW9mIEEgLT4gdHJ1ZVxuYSBpbnN0YWNlb2YgQiAtPiB0cnVlXG5cbiovXG5cbmZ1bmN0aW9uIHRhc2sxICgpIHtcbiAgZnVuY3Rpb24gQSgpIHt9XG4gIGZ1bmN0aW9uIEIoKSB7fVxuXG4gIEEucHJvdG90eXBlID0gQi5wcm90b3R5cGUgPSB7fTtcblxuICB2YXIgYSA9IG5ldyBBKCk7XG5cbiAgY29uc29sZS5sb2coIGEgaW5zdGFuY2VvZiBBICk7IC8vIHRydWVcbiAgY29uc29sZS5sb2coIGEgaW5zdGFuY2VvZiBCICk7IC8vIHRydWVcbn1cbi8vIHRhc2sxKClcblxuXG5cblxuLypUYXNrIDI6IHdoYXQgYW5kIHdoeSBjb25zb2xlIGxvZ3M/XG5BbnN3ZXI6IFxuICAxLiBmYWxzZSwgYmVjYXVzZSBSYWJiaXQucHJvdG90eXBlLmNvbnN0cnVjdG9yIGlzIEFuaW1hbFxuICBUbyBwcmV2ZW50IHRoaXMsIHNldCBjb25zdHJ1Y3RvciBleHBsaWNpdGx5XG4gIFJhYmJpdC5wcm90b3R5cGUuY29uc3RydWN0b3IgPSBSYWJiaXRcbiAgKGluY29ycmVjdDogcmVzdWx0IGlzIHRydWUsIGJlY2F1c2UgY29uc3RydWN0b3Igbm90IHVzZWQgZXF1YWxpdHkgY2hlY2tpbmdcbiAgb25seSBwcm90b3R5cGU6IHJlbWVtYmVyIGZvciBmdXR1cmUpXG5cbiAgMi4gdHJ1ZSwgc2VlIGFuc3dlciAxXG4gIDMuIHRydWUsIGJlY2F1c2UgYWxsIGZ1bmN0aW9ucyBhcmUgb2JqZWN0c1xuKi9cblxuZnVuY3Rpb24gdGFzazIgKCkge1xuICBmdW5jdGlvbiBBbmltYWwoKSB7fVxuXG4gIGZ1bmN0aW9uIFJhYmJpdCgpIHt9XG4gIFJhYmJpdC5wcm90b3R5cGUgPSBPYmplY3QuY3JlYXRlKEFuaW1hbC5wcm90b3R5cGUpO1xuXG4gIHZhciByYWJiaXQgPSBuZXcgUmFiYml0KCk7XG5cbiAgY29uc29sZS5sb2coIHJhYmJpdCBpbnN0YW5jZW9mIFJhYmJpdCApOyAvL2ZhbHNlXG4gIGNvbnNvbGUubG9nKCByYWJiaXQgaW5zdGFuY2VvZiBBbmltYWwgKTsgLy90cnVlXG4gIGNvbnNvbGUubG9nKCByYWJiaXQgaW5zdGFuY2VvZiBPYmplY3QgKTsgLy90cnVlXG59XG50YXNrMigpIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
