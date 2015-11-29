@@ -45,8 +45,9 @@ function task2 () {
 
   var rabbit = new Rabbit();
 
-  console.log( rabbit instanceof Rabbit ); //false
+  console.log( rabbit instanceof Rabbit ); //true
   console.log( rabbit instanceof Animal ); //true
   console.log( rabbit instanceof Object ); //true
 }
-task2()
+// task2()
+
