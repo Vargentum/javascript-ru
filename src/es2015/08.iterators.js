@@ -85,4 +85,4 @@ function example2 () {
   console.log(Math.max(...a))
   console.log(Math.max(...b))
 }
-example2()
+// example2()

@@ -90,4 +90,4 @@ function example2 () {
   console.log(r1.color)
 
 }
-example2()
+// example2()
