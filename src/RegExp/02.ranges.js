@@ -1,4 +1,17 @@
 /*
+
+
+  allmatched ranges:
+    [/s/S]
+    [/w/W]
+*/
+
+
+
+
+
+
+/*
   what does return and why?
 
   1. null - after 'Java' some letter (not s,c,r,i,p,t) must follow.
