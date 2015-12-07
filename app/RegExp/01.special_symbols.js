@@ -1,0 +1,19 @@
+'use strict';
+
+/*
+Task 1:
+Напишите регулярное выражение для поиска времени в строке: 
+Завтрак в 09:00.
+*/
+
+function task1() {
+
+  function getTime(str) {
+    return str.match(/\d\d:\d\d/g).join();
+  }
+
+  console.log(getTime('breakfast at 10:00.'));
+  console.log(getTime('basketball match ends with 99:85 score.'));
+}
+// task1()
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIjAxLnNwZWNpYWxfc3ltYm9scy5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7OztBQU1BLFNBQVMsS0FBSyxHQUFJOztBQUVoQixXQUFTLE9BQU8sQ0FBRSxHQUFHLEVBQUU7QUFDckIsV0FBTyxHQUFHLENBQUMsS0FBSyxDQUFDLFlBQVksQ0FBQyxDQUNuQixJQUFJLEVBQUUsQ0FBQTtHQUNsQjs7QUFFRCxTQUFPLENBQUMsR0FBRyxDQUFDLE9BQU8sQ0FBQyxxQkFBcUIsQ0FBQyxDQUFDLENBQUM7QUFDNUMsU0FBTyxDQUFDLEdBQUcsQ0FBQyxPQUFPLENBQUMseUNBQXlDLENBQUMsQ0FBQyxDQUFDO0NBQ2pFOztBQUFBIiwiZmlsZSI6IlJlZ0V4cC8wMS5zcGVjaWFsX3N5bWJvbHMuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuVGFzayAxOlxu0J3QsNC/0LjRiNC40YLQtSDRgNC10LPRg9C70Y/RgNC90L7QtSDQstGL0YDQsNC20LXQvdC40LUg0LTQu9GPINC/0L7QuNGB0LrQsCDQstGA0LXQvNC10L3QuCDQsiDRgdGC0YDQvtC60LU6IFxu0JfQsNCy0YLRgNCw0Log0LIgMDk6MDAuXG4qL1xuXG5mdW5jdGlvbiB0YXNrMSAoKSB7XG4gIFxuICBmdW5jdGlvbiBnZXRUaW1lIChzdHIpIHtcbiAgICByZXR1cm4gc3RyLm1hdGNoKC9cXGRcXGQ6XFxkXFxkL2cpXG4gICAgICAgICAgICAgIC5qb2luKClcbiAgfVxuXG4gIGNvbnNvbGUubG9nKGdldFRpbWUoJ2JyZWFrZmFzdCBhdCAxMDowMC4nKSk7XG4gIGNvbnNvbGUubG9nKGdldFRpbWUoJ2Jhc2tldGJhbGwgbWF0Y2ggZW5kcyB3aXRoIDk5Ojg1IHNjb3JlLicpKTtcbn1cbi8vIHRhc2sxKClcblxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
