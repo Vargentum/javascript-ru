@@ -64,13 +64,21 @@ function task2 () {
 
   let ellipsisPattern = /\.{3,}/g
   let hexPattern = /#[a-f0-9]{6}/ig
-  let posPattern = /\b\d*[^-]?\d+\.?\d*\b/g
-  let allNumsPattern = /\b-?\d+\.?\d*\b/g
+  let posPattern = /[^-]?\d+\.?\d*/g
+  let allNumsPattern = /-?\d+\.?\d*/g
 
   showMatched("Привет!... Как дела?..... А это да..?", ellipsisPattern)
   showMatched("My color #0931 #09133fa is #fafafa and #6fap14", hexPattern)
   showMatched("-31, 14, 43.42, -15.05, 4103, af42410b, 0.5093, 0.53400", posPattern)
   showMatched("-31, 14, 43.42, -15.05, 4103, af42410b, 0.5093, 0.53400", allNumsPattern)
+
+  /*Tips:
+    wrap in () to add quantifiers to the part of regexp
+    `-` doesnt need \ 
+  */
+
+  let posPatternU = /\d+(\.?\d*)?/g
+  let allNumsPatternU = /-?\d+(\.?\d*)?/g
 }
 task2()
 
