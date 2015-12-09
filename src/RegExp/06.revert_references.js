@@ -31,3 +31,19 @@ function example2 () {
   console.log(str.match(pattern))
 }
 // example2()
+
+
+/*
+Find BB tags
+ББ-тег имеет вид [имя]...[/имя], где имя — слово, одно из: b, url, quote.
+ББ-теги могут быть вложенными, но сам в себя тег быть вложен не может
+*/
+
+function task1 () {
+  let bbPattern = /\[(b|url|quote)\].*?\[\/\1\]/ig
+  let str = "..[url]http://ya.ru[/url].."
+
+  console.log(str.match(bbPattern))
+  console.log(str1.match(bbPattern))
+}
+// task1()
