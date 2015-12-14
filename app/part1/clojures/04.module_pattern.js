@@ -1,0 +1,38 @@
+'use strict';
+
+/*Паттерн Модуль:
+
+смысл: 
+  - разделить внутренний и внешний интерфейс
+  - запретить доступ извне к внутренним деталям реализации объекта: 
+    переменным, вспомогательным функциям и т.п.
+
+*/
+
+// Вариант 1: с внутренним присвоением
+
+(function (argument) {
+  function moduleName() {}
+
+  var privateValue = 'test';
+  var privateMethod = function privateMethod(argument) {/*private*/};
+
+  moduleName.publicMethod = function (argument) {/*public*/};
+
+  window.moduleName = moduleName; //присвоение
+})();
+
+// Вариант 2: Function Expression через return
+
+var lodash = (function () {
+  //*
+
+  var privateValue = 'someValue';
+  var privateMethod = function privateMethod(argument) {/*private*/};
+
+  return { //*
+    publicValue: "test",
+    publicMethod: function publicMethod(argument) {/*public*/}
+  };
+})();
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIjA0Lm1vZHVsZV9wYXR0ZXJuLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7QUFhQSxBQUFDLENBQUEsVUFBVSxRQUFRLEVBQUU7QUFDbkIsV0FBUyxVQUFVLEdBQUUsRUFBRTs7QUFFdkIsTUFBSSxZQUFZLEdBQUcsTUFBTSxDQUFBO0FBQ3pCLE1BQUksYUFBYSxHQUFHLFNBQWhCLGFBQWEsQ0FBYSxRQUFRLEVBQUUsYUFBYSxDQUFBOztBQUVyRCxZQUFVLENBQUMsWUFBWSxHQUFHLFVBQVUsUUFBUSxFQUFFLFlBQVksQ0FBQTs7QUFFMUQsUUFBTSxDQUFDLFVBQVUsR0FBRyxVQUFVO0FBQUMsQ0FDaEMsQ0FBQSxFQUFFOzs7O0FBQUMsQUFPSixJQUFJLE1BQU0sR0FBRyxDQUFDLFlBQVk7OztBQUV4QixNQUFJLFlBQVksR0FBRyxXQUFXLENBQUM7QUFDL0IsTUFBSSxhQUFhLEdBQUcsU0FBaEIsYUFBYSxDQUFhLFFBQVEsRUFBRSxhQUFhLENBQUM7O0FBRXRELFNBQU07QUFDSixlQUFXLEVBQUUsTUFBTTtBQUNuQixnQkFBWSxFQUFFLHNCQUFVLFFBQVEsRUFBRSxZQUFZO0dBQy9DLENBQUE7Q0FDRixDQUFBLEVBQUcsQ0FBQyIsImZpbGUiOiJwYXJ0MS9jbG9qdXJlcy8wNC5tb2R1bGVfcGF0dGVybi5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8q0J/QsNGC0YLQtdGA0L0g0JzQvtC00YPQu9GMOlxuXG7RgdC80YvRgdC7OiBcbiAgLSDRgNCw0LfQtNC10LvQuNGC0Ywg0LLQvdGD0YLRgNC10L3QvdC40Lkg0Lgg0LLQvdC10YjQvdC40Lkg0LjQvdGC0LXRgNGE0LXQudGBXG4gIC0g0LfQsNC/0YDQtdGC0LjRgtGMINC00L7RgdGC0YPQvyDQuNC30LLQvdC1INC6INCy0L3Rg9GC0YDQtdC90L3QuNC8INC00LXRgtCw0LvRj9C8INGA0LXQsNC70LjQt9Cw0YbQuNC4INC+0LHRitC10LrRgtCwOiBcbiAgICDQv9C10YDQtdC80LXQvdC90YvQvCwg0LLRgdC/0L7QvNC+0LPQsNGC0LXQu9GM0L3Ri9C8INGE0YPQvdC60YbQuNGP0Lwg0Lgg0YIu0L8uXG5cbiovXG5cblxuXG4vLyDQktCw0YDQuNCw0L3RgiAxOiDRgSDQstC90YPRgtGA0LXQvdC90LjQvCDQv9GA0LjRgdCy0L7QtdC90LjQtdC8XG5cbihmdW5jdGlvbiAoYXJndW1lbnQpIHtcbiAgZnVuY3Rpb24gbW9kdWxlTmFtZSgpe31cblxuICB2YXIgcHJpdmF0ZVZhbHVlID0gJ3Rlc3QnXG4gIHZhciBwcml2YXRlTWV0aG9kID0gZnVuY3Rpb24gKGFyZ3VtZW50KSB7Lypwcml2YXRlKi99XG5cbiAgbW9kdWxlTmFtZS5wdWJsaWNNZXRob2QgPSBmdW5jdGlvbiAoYXJndW1lbnQpIHsvKnB1YmxpYyovfVxuXG4gIHdpbmRvdy5tb2R1bGVOYW1lID0gbW9kdWxlTmFtZTsgLy/Qv9GA0LjRgdCy0L7QtdC90LjQtVxufSgpKVxuXG5cblxuLy8g0JLQsNGA0LjQsNC90YIgMjogRnVuY3Rpb24gRXhwcmVzc2lvbiDRh9C10YDQtdC3IHJldHVyblxuXG5cbnZhciBsb2Rhc2ggPSAoZnVuY3Rpb24gKCkgeyAvLypcbiAgXG4gIHZhciBwcml2YXRlVmFsdWUgPSAnc29tZVZhbHVlJztcbiAgdmFyIHByaXZhdGVNZXRob2QgPSBmdW5jdGlvbiAoYXJndW1lbnQpIHsvKnByaXZhdGUqL307XG5cbiAgcmV0dXJueyAvLypcbiAgICBwdWJsaWNWYWx1ZTogXCJ0ZXN0XCIsXG4gICAgcHVibGljTWV0aG9kOiBmdW5jdGlvbiAoYXJndW1lbnQpIHsvKnB1YmxpYyovfVxuICB9XG59KSgpOyJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
