@@ -57,3 +57,28 @@ function task2 () {
 }
 
 
+/*
+Свойство textContent не поддерживается IE8. Однако, там есть свойство innerText.
+
+Создаёте полифилл, который проверяет поддержку свойства textContent,
+и если её нет — создаёт его, используя innerText.
+Получится, что в IE8 «новое» свойство textContent будет «псевдонимом» для innerText.
+
+Хотя свойство innerText и работает по-иному, нежели textContent,
+но в некоторых ситуациях они могут быть взаимозаменимы. Именно на них направлен полифилл.
+
+*/
+
+function task3() {
+
+  if (document.documentElement.textContent === undefined) {
+    Object.defineProperty(HTMLElement.prototype, "textContent", {
+      get: function() {
+        return this.innerText
+      },
+      set: function(val) {
+        this.innerText = val
+      }
+    })
+  }
+}
