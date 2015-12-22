@@ -116,9 +116,30 @@ Another approach: eraze all `innerHTML` content
 */
 
 
-/*Задача 5*/
+/*Задача 5
+Напишите интерфейс для создания списка.
 
+Для каждого пункта:
 
+Запрашивайте содержимое пункта у пользователя с помощью prompt.
+Создавайте пункт и добавляйте его к UL.
+Процесс прерывается, когда пользователь нажимает ESC или вводит пустую строку.*/
+
+function task5 () {
+  let list = document.createElement('ul')
+  document.body.appendChild(list)
+  let usrInput = true
+  let i = 1
+  while(usrInput){
+    usrInput = window.prompt("Add item to list?", `item ${i}`)
+    if (!usrInput) return
+    i++
+    let item = document.createElement('li')
+    item.textContent = usrInput
+    list.appendChild(item)
+  }
+}
+// task5()
 
 
 /*Задача 6:
@@ -178,5 +199,102 @@ add item to list
 
   document.body.appendChild(createDomTree(data))
 
+
+  /*
+
+  iterate through keys
+  generate `li` with text (key)
+  check if key contains object
+    if true: call recursive
+    add result of reqursion as list
+  
+  */
+
+
+  function createDomTree1 (obj) {
+    let items = ``
+
+    for (let key in obj) {
+      if (Object.keys(obj[key]).length === 0) items += `<li>${key}</li>`
+      else items += `<li>${key} ${createDomTree1(obj[key])}</li>`
+    };
+    return items ? `<ul>${items}</ul>` : ``
+  }
+
+  document.body.innerHTML = createDomTree1(data)
 }
-task6()
+// task6()
+
+
+
+
+/*
+Создать календарь в виде таблицы
+Напишите функцию, которая умеет генерировать календарь для заданной пары (месяц, год).
+
+Календарь должен быть таблицей, где каждый день — это TD. 
+У таблицы должен быть заголовок с названиями дней недели, каждый день — TH.
+
+Синтаксис: createCalendar(id, year, month).
+Такой вызов должен генерировать текст для календаря месяца month в году year,
+а затем помещать его внутрь элемента с указанным id.
+
+Например: createCalendar("cal", 2012, 9) сгенерирует в <div id='cal'></div> следующий календарь:
+*/
+
+
+
+/*while g.getMonth = 0*/
+
+function task7 () {
+
+  const days = 'su, mo, tu, we, th, fr, sa'
+  
+  function createCalendar (id, year, month) {
+    
+    let mkDays = (dd) => {
+      let days = dd.split(',').map(d => `<th>${d.trim()}</th>`).join('')
+      return `<tr>${days}</tr>`
+    }
+
+    let mkNumbers = (year, month) => {
+      let days = []
+      let i = 1
+      while(true){
+        let day = new Date(year, month, i)
+        if (day.getMonth() !== month) break
+        days.push(day)
+        i++;
+      }
+
+
+      let firstRow = ''
+
+      while(condition){
+        statement
+      }
+
+    }
+
+
+    /*Problem:
+
+      break days array into rows (7 items)
+      sync days with day captions
+
+
+    */
+
+
+    return `<table id=${id}>
+              ${mkDays(days)}
+              ${mkNumbers(year, month)}
+            </table>`
+  }
+
+
+  createCalendar('test', 1989, 1)
+}
+task7()
+
+
