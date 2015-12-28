@@ -1,0 +1,94 @@
+'use strict';
+
+/*
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <div>Пользователи:</div>
+  <ul>
+    <li>Маша</li>
+    <li>Вовочка</li>
+  </ul>
+
+  <!-- комментарий -->
+
+  <script>
+    // ... ваш код
+  </script>
+
+</body>
+
+</html>
+
+
+Напишите код, который получит элемент HEAD.
+Напишите код, который получит UL.
+Напишите код, который получит второй LI. Будет ли ваш код работать в IE8-, если комментарий переместить между элементами LI?
+
+нет: так как в IE8- children содержит узлы комментариев
+*/
+
+function task1() {
+  var head = document.head;
+  var list = document.body.children[1];
+  var li = list.children[1];
+}
+
+/*
+  Tip: head = document.documentElement.firstChild
+*/
+
+/*
+Придумайте самый короткий код для проверки, пуст ли элемент elem.
+«Пустой» — значит нет дочерних узлов, даже текстовых.
+*/
+function isElementEmpty(element) {
+  return !element.childNodes.length;
+}
+
+/*
+  Tip: .hasChildNodes() method is available. Do the same
+*/
+
+/*
+Если elem — это произвольный узел DOM…
+
+Верно ли, что elem.lastChild.nextSibling всегда null? 
+Да, потому что .lastChild это гарантированно последний узел (в отличии от lastElementChild)
+
+Верно ли, что elem.children[0].previousSibling всегда null ?
+Нет, потому что children хранит только Элементы, а перед ним может быть текстовый узел.
+
+Tip: если .lastChild/.children null, то будет ошибка
+*/
+
+/*
+Напишите код, который выделит все ячейки в таблице по диагонали.
+
+Вам нужно будет получить из таблицы table все диагональные td и выделить их, используя код:
+*/
+function hLeftDiagonalCells(table) {
+  for (var i = 0; i < table.rows.length; i++) {
+    var diagCell = table.rows[i].cells[i];
+    diagCell.style.backgroundColor = 'red';
+  };
+}
+
+function hBothDiagonalCells(table) {
+  for (var i = 0; i < table.rows.length; i++) {
+    var diagCellLeft = table.rows[i].cells[i];
+    var diagCellRight = table.rows[i].cells[table.rows.length - i - 1];
+    [diagCellLeft, diagCellRight].forEach(function (i) {
+      return i.style.backgroundColor = 'red';
+    });
+  };
+}
+
+// hLeftDiagonalCells(document.body.children[1])
+hBothDiagonalCells(document.body.children[1]);
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIjAxLmRvbV9uYXZpZ2F0aW9uLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBaUNBLFNBQVMsS0FBSyxHQUFJO0FBQ2hCLE1BQUksSUFBSSxHQUFHLFFBQVEsQ0FBQyxJQUFJLENBQUE7QUFDeEIsTUFBSSxJQUFJLEdBQUcsUUFBUSxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUE7QUFDcEMsTUFBSSxFQUFFLEdBQUcsSUFBSSxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQTtDQUMxQjs7Ozs7Ozs7OztBQUFBLEFBWUQsU0FBUyxjQUFjLENBQUUsT0FBTyxFQUFFO0FBQ2hDLFNBQU8sQ0FBQyxPQUFPLENBQUMsVUFBVSxDQUFDLE1BQU0sQ0FBQTtDQUNsQzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxBQTBCRCxTQUFTLGtCQUFrQixDQUFFLEtBQUssRUFBRTtBQUNsQyxPQUFLLElBQUksQ0FBQyxHQUFHLENBQUMsRUFBRSxDQUFDLEdBQUcsS0FBSyxDQUFDLElBQUksQ0FBQyxNQUFNLEVBQUUsQ0FBQyxFQUFFLEVBQUU7QUFDMUMsUUFBSSxRQUFRLEdBQUcsS0FBSyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQyxLQUFLLENBQUMsQ0FBQyxDQUFDLENBQUM7QUFDdEMsWUFBUSxDQUFDLEtBQUssQ0FBQyxlQUFlLEdBQUcsS0FBSyxDQUFBO0dBQ3ZDLENBQUM7Q0FDSDs7QUFFRCxTQUFTLGtCQUFrQixDQUFFLEtBQUssRUFBRTtBQUNsQyxPQUFLLElBQUksQ0FBQyxHQUFHLENBQUMsRUFBRSxDQUFDLEdBQUcsS0FBSyxDQUFDLElBQUksQ0FBQyxNQUFNLEVBQUUsQ0FBQyxFQUFFLEVBQUU7QUFDMUMsUUFBSSxZQUFZLEdBQUksS0FBSyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQyxLQUFLLENBQUMsQ0FBQyxDQUFDLENBQUM7QUFDM0MsUUFBSSxhQUFhLEdBQUcsS0FBSyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQyxLQUFLLENBQUMsS0FBSyxDQUFDLElBQUksQ0FBQyxNQUFNLEdBQUcsQ0FBQyxHQUFHLENBQUMsQ0FBQyxDQUFDO0FBQ25FLEtBQUMsWUFBWSxFQUFFLGFBQWEsQ0FBQyxDQUFDLE9BQU8sQ0FBQyxVQUFBLENBQUM7YUFBSSxDQUFDLENBQUMsS0FBSyxDQUFDLGVBQWUsR0FBRyxLQUFLO0tBQUEsQ0FBQyxDQUFBO0dBQzVFLENBQUM7Q0FDSDs7O0FBQUEsQUFHRCxrQkFBa0IsQ0FBQyxRQUFRLENBQUMsSUFBSSxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFBIiwiZmlsZSI6InBhcnQyL2RvbS8wMS5kb21fbmF2aWdhdGlvbi5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qXG48IURPQ1RZUEUgSFRNTD5cbjxodG1sPlxuXG48aGVhZD5cbiAgPG1ldGEgY2hhcnNldD1cInV0Zi04XCI+XG48L2hlYWQ+XG5cbjxib2R5PlxuICA8ZGl2PtCf0L7Qu9GM0LfQvtCy0LDRgtC10LvQuDo8L2Rpdj5cbiAgPHVsPlxuICAgIDxsaT7QnNCw0YjQsDwvbGk+XG4gICAgPGxpPtCS0L7QstC+0YfQutCwPC9saT5cbiAgPC91bD5cblxuICA8IS0tINC60L7QvNC80LXQvdGC0LDRgNC40LkgLS0+XG5cbiAgPHNjcmlwdD5cbiAgICAvLyAuLi4g0LLQsNGIINC60L7QtFxuICA8L3NjcmlwdD5cblxuPC9ib2R5PlxuXG48L2h0bWw+XG5cblxu0J3QsNC/0LjRiNC40YLQtSDQutC+0LQsINC60L7RgtC+0YDRi9C5INC/0L7Qu9GD0YfQuNGCINGN0LvQtdC80LXQvdGCIEhFQUQuXG7QndCw0L/QuNGI0LjRgtC1INC60L7QtCwg0LrQvtGC0L7RgNGL0Lkg0L/QvtC70YPRh9C40YIgVUwuXG7QndCw0L/QuNGI0LjRgtC1INC60L7QtCwg0LrQvtGC0L7RgNGL0Lkg0L/QvtC70YPRh9C40YIg0LLRgtC+0YDQvtC5IExJLiDQkdGD0LTQtdGCINC70Lgg0LLQsNGIINC60L7QtCDRgNCw0LHQvtGC0LDRgtGMINCyIElFOC0sINC10YHQu9C4INC60L7QvNC80LXQvdGC0LDRgNC40Lkg0L/QtdGA0LXQvNC10YHRgtC40YLRjCDQvNC10LbQtNGDINGN0LvQtdC80LXQvdGC0LDQvNC4IExJP1xuXG7QvdC10YI6INGC0LDQuiDQutCw0Log0LIgSUU4LSBjaGlsZHJlbiDRgdC+0LTQtdGA0LbQuNGCINGD0LfQu9GLINC60L7QvNC80LXQvdGC0LDRgNC40LXQslxuKi9cblxuZnVuY3Rpb24gdGFzazEgKCkge1xuICBsZXQgaGVhZCA9IGRvY3VtZW50LmhlYWRcbiAgbGV0IGxpc3QgPSBkb2N1bWVudC5ib2R5LmNoaWxkcmVuWzFdXG4gIGxldCBsaSA9IGxpc3QuY2hpbGRyZW5bMV1cbn1cblxuLypcbiAgVGlwOiBoZWFkID0gZG9jdW1lbnQuZG9jdW1lbnRFbGVtZW50LmZpcnN0Q2hpbGRcbiovXG5cblxuXG4vKlxu0J/RgNC40LTRg9C80LDQudGC0LUg0YHQsNC80YvQuSDQutC+0YDQvtGC0LrQuNC5INC60L7QtCDQtNC70Y8g0L/RgNC+0LLQtdGA0LrQuCwg0L/Rg9GB0YIg0LvQuCDRjdC70LXQvNC10L3RgiBlbGVtLlxuwqvQn9GD0YHRgtC+0LnCuyDigJQg0LfQvdCw0YfQuNGCINC90LXRgiDQtNC+0YfQtdGA0L3QuNGFINGD0LfQu9C+0LIsINC00LDQttC1INGC0LXQutGB0YLQvtCy0YvRhS5cbiovXG5mdW5jdGlvbiBpc0VsZW1lbnRFbXB0eSAoZWxlbWVudCkge1xuICByZXR1cm4gIWVsZW1lbnQuY2hpbGROb2Rlcy5sZW5ndGhcbn1cblxuLypcbiAgVGlwOiAuaGFzQ2hpbGROb2RlcygpIG1ldGhvZCBpcyBhdmFpbGFibGUuIERvIHRoZSBzYW1lXG4qL1xuXG5cbi8qXG7QldGB0LvQuCBlbGVtIOKAlCDRjdGC0L4g0L/RgNC+0LjQt9Cy0L7Qu9GM0L3Ri9C5INGD0LfQtdC7IERPTeKAplxuXG7QktC10YDQvdC+INC70LgsINGH0YLQviBlbGVtLmxhc3RDaGlsZC5uZXh0U2libGluZyDQstGB0LXQs9C00LAgbnVsbD8gXG7QlNCwLCDQv9C+0YLQvtC80YMg0YfRgtC+IC5sYXN0Q2hpbGQg0Y3RgtC+INCz0LDRgNCw0L3RgtC40YDQvtCy0LDQvdC90L4g0L/QvtGB0LvQtdC00L3QuNC5INGD0LfQtdC7ICjQsiDQvtGC0LvQuNGH0LjQuCDQvtGCIGxhc3RFbGVtZW50Q2hpbGQpXG5cbtCS0LXRgNC90L4g0LvQuCwg0YfRgtC+IGVsZW0uY2hpbGRyZW5bMF0ucHJldmlvdXNTaWJsaW5nINCy0YHQtdCz0LTQsCBudWxsID9cbtCd0LXRgiwg0L/QvtGC0L7QvNGDINGH0YLQviBjaGlsZHJlbiDRhdGA0LDQvdC40YIg0YLQvtC70YzQutC+INCt0LvQtdC80LXQvdGC0YssINCwINC/0LXRgNC10LQg0L3QuNC8INC80L7QttC10YIg0LHRi9GC0Ywg0YLQtdC60YHRgtC+0LLRi9C5INGD0LfQtdC7LlxuXG5UaXA6INC10YHQu9C4IC5sYXN0Q2hpbGQvLmNoaWxkcmVuIG51bGwsINGC0L4g0LHRg9C00LXRgiDQvtGI0LjQsdC60LBcbiovXG5cblxuXG4vKlxu0J3QsNC/0LjRiNC40YLQtSDQutC+0LQsINC60L7RgtC+0YDRi9C5INCy0YvQtNC10LvQuNGCINCy0YHQtSDRj9GH0LXQudC60Lgg0LIg0YLQsNCx0LvQuNGG0LUg0L/QviDQtNC40LDQs9C+0L3QsNC70LguXG5cbtCS0LDQvCDQvdGD0LbQvdC+INCx0YPQtNC10YIg0L/QvtC70YPRh9C40YLRjCDQuNC3INGC0LDQsdC70LjRhtGLIHRhYmxlINCy0YHQtSDQtNC40LDQs9C+0L3QsNC70YzQvdGL0LUgdGQg0Lgg0LLRi9C00LXQu9C40YLRjCDQuNGFLCDQuNGB0L/QvtC70YzQt9GD0Y8g0LrQvtC0OlxuKi9cbmZ1bmN0aW9uIGhMZWZ0RGlhZ29uYWxDZWxscyAodGFibGUpIHtcbiAgZm9yICh2YXIgaSA9IDA7IGkgPCB0YWJsZS5yb3dzLmxlbmd0aDsgaSsrKSB7XG4gICAgbGV0IGRpYWdDZWxsID0gdGFibGUucm93c1tpXS5jZWxsc1tpXTtcbiAgICBkaWFnQ2VsbC5zdHlsZS5iYWNrZ3JvdW5kQ29sb3IgPSAncmVkJ1xuICB9O1xufVxuXG5mdW5jdGlvbiBoQm90aERpYWdvbmFsQ2VsbHMgKHRhYmxlKSB7XG4gIGZvciAodmFyIGkgPSAwOyBpIDwgdGFibGUucm93cy5sZW5ndGg7IGkrKykge1xuICAgIGxldCBkaWFnQ2VsbExlZnQgID0gdGFibGUucm93c1tpXS5jZWxsc1tpXTtcbiAgICBsZXQgZGlhZ0NlbGxSaWdodCA9IHRhYmxlLnJvd3NbaV0uY2VsbHNbdGFibGUucm93cy5sZW5ndGggLSBpIC0gMV07XG4gICAgW2RpYWdDZWxsTGVmdCwgZGlhZ0NlbGxSaWdodF0uZm9yRWFjaChpID0+IGkuc3R5bGUuYmFja2dyb3VuZENvbG9yID0gJ3JlZCcpXG4gIH07XG59XG5cbi8vIGhMZWZ0RGlhZ29uYWxDZWxscyhkb2N1bWVudC5ib2R5LmNoaWxkcmVuWzFdKVxuaEJvdGhEaWFnb25hbENlbGxzKGRvY3VtZW50LmJvZHkuY2hpbGRyZW5bMV0pIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
