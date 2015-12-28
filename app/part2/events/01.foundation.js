@@ -1,0 +1,81 @@
+"use strict";
+
+/*
+
+  Event
+  Event Listner / Handler
+
+
+  handler can be added by 3 ways:
+
+    - HTML - onclick=""
+    - elem.onclick = function
+
+  Multiple handlers addition
+    - elem.addEventListner( eventName, handler [,phase] )
+    - elem.removeEventListner( eventName, handler [,phase] )
+    
+    for IE8-
+    - elem.attachEvent( 'on' + eventName, handler)
+    - elem.detachEvent( 'on' + eventName, handler)
+
+
+*/
+
+/* Task 1
+Используя JavaScript, сделайте так, чтобы при клике на кнопку исчезал элемент с id="text".
+Решение: http://plnkr.co/edit/NOqslGqW5G9pDZE88bCj?p=preview
+*/
+function task1() {
+
+  hider.onclick = function () {
+    return text.hidden = true;
+  };
+}
+// task1()
+
+/*Task 2
+Создайте кнопку, при клике на которую, она будет скрывать сама себя.
+*/
+function task2() {
+  hider.onclick = function () {
+    this.hidden = true;
+  };
+}
+task2();
+
+/*Task 3
+
+В переменной button находится кнопка. Изначально обработчиков на ней нет.
+Что будет выведено при клике после выполнения кода?
+
+button.addEventListener("click", function() { alert("1"); });
+button.removeEventListener("click", function() { alert("1"); });
+button.onclick = function() { alert(2); };
+
+Ответ: 
+1. добавится обработчик
+2. предыдущий обработчик не будет удален, потому что для правильного удаления, 
+   необходимо указать имя функции. механизма для удаления анонимных функций с идентичным кодом НЕТ
+3. Обработчик onlick сработает в ДОПОЛНЕНИЕ к уже назначенным через `addEventListner`
+Итого: 1 и 2
+*/
+
+/*Task 4
+Создайте меню, которое раскрывается/сворачивается при клике:
+
+Решение: http://plnkr.co/edit/rwLtdIVNHRFcJNh8rZK4?p=preview
+*/
+
+/*Task 5
+Есть список сообщений. Добавьте каждому сообщению по кнопке для его скрытия.
+
+Решение: http://plnkr.co/edit/2uocYXVsEWLvPKY9I3vZ?p=preview
+*/
+
+/*Task 6 
+Создать карусель
+
+Решение: http://plnkr.co/edit/Epspd4uiu328y7ConxnH?p=preview
+*/
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIjAxLmZvdW5kYXRpb24uanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQTJCQSxTQUFTLEtBQUssR0FBSTs7QUFFaEIsT0FBSyxDQUFDLE9BQU8sR0FBRztXQUFNLElBQUksQ0FBQyxNQUFNLEdBQUcsSUFBSTtHQUFBLENBQUE7Q0FFekM7Ozs7OztBQUFBLEFBUUQsU0FBUyxLQUFLLEdBQUk7QUFDaEIsT0FBSyxDQUFDLE9BQU8sR0FBRyxZQUFZO0FBQzFCLFFBQUksQ0FBQyxNQUFNLEdBQUcsSUFBSSxDQUFBO0dBQ25CLENBQUE7Q0FDRjtBQUNELEtBQUssRUFBRTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEiLCJmaWxlIjoicGFydDIvZXZlbnRzLzAxLmZvdW5kYXRpb24uanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuXG4gIEV2ZW50XG4gIEV2ZW50IExpc3RuZXIgLyBIYW5kbGVyXG5cblxuICBoYW5kbGVyIGNhbiBiZSBhZGRlZCBieSAzIHdheXM6XG5cbiAgICAtIEhUTUwgLSBvbmNsaWNrPVwiXCJcbiAgICAtIGVsZW0ub25jbGljayA9IGZ1bmN0aW9uXG5cbiAgTXVsdGlwbGUgaGFuZGxlcnMgYWRkaXRpb25cbiAgICAtIGVsZW0uYWRkRXZlbnRMaXN0bmVyKCBldmVudE5hbWUsIGhhbmRsZXIgWyxwaGFzZV0gKVxuICAgIC0gZWxlbS5yZW1vdmVFdmVudExpc3RuZXIoIGV2ZW50TmFtZSwgaGFuZGxlciBbLHBoYXNlXSApXG4gICAgXG4gICAgZm9yIElFOC1cbiAgICAtIGVsZW0uYXR0YWNoRXZlbnQoICdvbicgKyBldmVudE5hbWUsIGhhbmRsZXIpXG4gICAgLSBlbGVtLmRldGFjaEV2ZW50KCAnb24nICsgZXZlbnROYW1lLCBoYW5kbGVyKVxuXG5cbiovXG5cblxuLyogVGFzayAxXG7QmNGB0L/QvtC70YzQt9GD0Y8gSmF2YVNjcmlwdCwg0YHQtNC10LvQsNC50YLQtSDRgtCw0LosINGH0YLQvtCx0Ysg0L/RgNC4INC60LvQuNC60LUg0L3QsCDQutC90L7Qv9C60YMg0LjRgdGH0LXQt9Cw0Lsg0Y3Qu9C10LzQtdC90YIg0YEgaWQ9XCJ0ZXh0XCIuXG7QoNC10YjQtdC90LjQtTogaHR0cDovL3BsbmtyLmNvL2VkaXQvTk9xc2xHcVc1RzlwRFpFODhiQ2o/cD1wcmV2aWV3XG4qL1xuZnVuY3Rpb24gdGFzazEgKCkge1xuICBcbiAgaGlkZXIub25jbGljayA9ICgpID0+IHRleHQuaGlkZGVuID0gdHJ1ZVxuXG59XG4vLyB0YXNrMSgpXG5cblxuXG4vKlRhc2sgMlxu0KHQvtC30LTQsNC50YLQtSDQutC90L7Qv9C60YMsINC/0YDQuCDQutC70LjQutC1INC90LAg0LrQvtGC0L7RgNGD0Y4sINC+0L3QsCDQsdGD0LTQtdGCINGB0LrRgNGL0LLQsNGC0Ywg0YHQsNC80LAg0YHQtdCx0Y8uXG4qL1xuZnVuY3Rpb24gdGFzazIgKCkge1xuICBoaWRlci5vbmNsaWNrID0gZnVuY3Rpb24gKCkge1xuICAgIHRoaXMuaGlkZGVuID0gdHJ1ZSAgICBcbiAgfVxufVxudGFzazIoKVxuXG5cbi8qVGFzayAzXG5cbtCSINC/0LXRgNC10LzQtdC90L3QvtC5IGJ1dHRvbiDQvdCw0YXQvtC00LjRgtGB0Y8g0LrQvdC+0L/QutCwLiDQmNC30L3QsNGH0LDQu9GM0L3QviDQvtCx0YDQsNCx0L7RgtGH0LjQutC+0LIg0L3QsCDQvdC10Lkg0L3QtdGCLlxu0KfRgtC+INCx0YPQtNC10YIg0LLRi9Cy0LXQtNC10L3QviDQv9GA0Lgg0LrQu9C40LrQtSDQv9C+0YHQu9C1INCy0YvQv9C+0LvQvdC10L3QuNGPINC60L7QtNCwP1xuXG5idXR0b24uYWRkRXZlbnRMaXN0ZW5lcihcImNsaWNrXCIsIGZ1bmN0aW9uKCkgeyBhbGVydChcIjFcIik7IH0pO1xuYnV0dG9uLnJlbW92ZUV2ZW50TGlzdGVuZXIoXCJjbGlja1wiLCBmdW5jdGlvbigpIHsgYWxlcnQoXCIxXCIpOyB9KTtcbmJ1dHRvbi5vbmNsaWNrID0gZnVuY3Rpb24oKSB7IGFsZXJ0KDIpOyB9O1xuXG7QntGC0LLQtdGCOiBcbjEuINC00L7QsdCw0LLQuNGC0YHRjyDQvtCx0YDQsNCx0L7RgtGH0LjQulxuMi4g0L/RgNC10LTRi9C00YPRidC40Lkg0L7QsdGA0LDQsdC+0YLRh9C40Log0L3QtSDQsdGD0LTQtdGCINGD0LTQsNC70LXQvSwg0L/QvtGC0L7QvNGDINGH0YLQviDQtNC70Y8g0L/RgNCw0LLQuNC70YzQvdC+0LPQviDRg9C00LDQu9C10L3QuNGPLCBcbiAgINC90LXQvtCx0YXQvtC00LjQvNC+INGD0LrQsNC30LDRgtGMINC40LzRjyDRhNGD0L3QutGG0LjQuC4g0LzQtdGF0LDQvdC40LfQvNCwINC00LvRjyDRg9C00LDQu9C10L3QuNGPINCw0L3QvtC90LjQvNC90YvRhSDRhNGD0L3QutGG0LjQuSDRgSDQuNC00LXQvdGC0LjRh9C90YvQvCDQutC+0LTQvtC8INCd0JXQolxuMy4g0J7QsdGA0LDQsdC+0YLRh9C40Logb25saWNrINGB0YDQsNCx0L7RgtCw0LXRgiDQsiDQlNCe0J/QntCb0J3QldCd0JjQlSDQuiDRg9C20LUg0L3QsNC30L3QsNGH0LXQvdC90YvQvCDRh9C10YDQtdC3IGBhZGRFdmVudExpc3RuZXJgXG7QmNGC0L7Qs9C+OiAxINC4IDJcbiovXG5cblxuXG4vKlRhc2sgNFxu0KHQvtC30LTQsNC50YLQtSDQvNC10L3Rjiwg0LrQvtGC0L7RgNC+0LUg0YDQsNGB0LrRgNGL0LLQsNC10YLRgdGPL9GB0LLQvtGA0LDRh9C40LLQsNC10YLRgdGPINC/0YDQuCDQutC70LjQutC1OlxuXG7QoNC10YjQtdC90LjQtTogaHR0cDovL3BsbmtyLmNvL2VkaXQvcndMdGRJVk5IUkZjSk5oOHJaSzQ/cD1wcmV2aWV3XG4qL1xuXG5cbi8qVGFzayA1XG7QldGB0YLRjCDRgdC/0LjRgdC+0Log0YHQvtC+0LHRidC10L3QuNC5LiDQlNC+0LHQsNCy0YzRgtC1INC60LDQttC00L7QvNGDINGB0L7QvtCx0YnQtdC90LjRjiDQv9C+INC60L3QvtC/0LrQtSDQtNC70Y8g0LXQs9C+INGB0LrRgNGL0YLQuNGPLlxuXG7QoNC10YjQtdC90LjQtTogaHR0cDovL3BsbmtyLmNvL2VkaXQvMnVvY1lYVnNFV0x2UEtZOUkzdlo/cD1wcmV2aWV3XG4qL1xuXG5cbi8qVGFzayA2IFxu0KHQvtC30LTQsNGC0Ywg0LrQsNGA0YPRgdC10LvRjFxuXG7QoNC10YjQtdC90LjQtTogaHR0cDovL3BsbmtyLmNvL2VkaXQvRXBzcGQ0dWl1MzI4eTdDb254bkg/cD1wcmV2aWV3XG4qLyJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
