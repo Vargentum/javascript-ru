@@ -4,7 +4,19 @@
   <meta charset="UTF-8">
   <!-- some comment -->
   <title>Learn javascript.ru</title>
-
+  <style>
+    .tooltip {
+      position: fixed;
+      padding: 10px 20px;
+      border: 1px solid #b3c9ce;
+      border-radius: 4px;
+      text-align: center;
+      font: italic 14px/1.3 arial, sans-serif;
+      color: #333;
+      background: #fff;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+    }
+  </style>
 
 </head>
 <body>
@@ -13,19 +25,19 @@
     <div class="pane">
       <h3>Лошадь</h3>
       <p>Домашняя лошадь — животное семейства непарнокопытных, одомашненный и единственный сохранившийся подвид дикой лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</p>
-      <button class="remove-button">[x]</button>
+      <button data-tooltip="Some text" class="remove-button">[x]</button>
     </div>
     <div class="pane">
       <h3>Осёл</h3>
       <p>Домашний осёл или ишак — одомашненный подвид дикого осла, сыгравший важную историческую роль в развитии хозяйства и культуры человека. Все одомашненные ослы относятся к африканским ослам.</p>
-      <button class="remove-button">[x]</button>
+      <button data-tooltip="SOME <br/> html" class="remove-button">[x]</button>
     </div>
     <div class="pane">
       <h3>Корова, а также пара слов о диком быке, о волах и о тёлках. </h3>
       <p>Коро́ва — самка домашнего быка, одомашненного подвида дикого быка, парнокопытного жвачного животного семейства полорогих. Самцы вида называются быками, молодняк — телятами, кастрированные самцы — волами. Молодых (до первой стельности) самок называют
         тёлками.
       </p>
-      <button class="remove-button">[x]</button>
+      <button data-tooltip="security issue <script>alert('DANGER')</script>" class="remove-button">[x]</button>
     </div>
   </div>
 
@@ -110,6 +122,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
-  <script src="./part2/events/02.event_delegation.js"></script>
+  <!-- <script src="./part2/events/02.event_delegation.js"></script> -->
+  <script src="./part2/events/03.behavior_pattern.js"></script>
 </body>
 </html>
