@@ -9,13 +9,107 @@
 </head>
 <body>
 
-  
-  <input type="button" id="hider" value="Нажмите, чтобы спрятать текст" />
+  <div id="msgContainer">
+    <div class="pane">
+      <h3>Лошадь</h3>
+      <p>Домашняя лошадь — животное семейства непарнокопытных, одомашненный и единственный сохранившийся подвид дикой лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</p>
+      <button class="remove-button">[x]</button>
+    </div>
+    <div class="pane">
+      <h3>Осёл</h3>
+      <p>Домашний осёл или ишак — одомашненный подвид дикого осла, сыгравший важную историческую роль в развитии хозяйства и культуры человека. Все одомашненные ослы относятся к африканским ослам.</p>
+      <button class="remove-button">[x]</button>
+    </div>
+    <div class="pane">
+      <h3>Корова, а также пара слов о диком быке, о волах и о тёлках. </h3>
+      <p>Коро́ва — самка домашнего быка, одомашненного подвида дикого быка, парнокопытного жвачного животного семейства полорогих. Самцы вида называются быками, молодняк — телятами, кастрированные самцы — волами. Молодых (до первой стельности) самок называют
+        тёлками.
+      </p>
+      <button class="remove-button">[x]</button>
+    </div>
+  </div>
 
-  <div id="text">Текст</div>
 
   
+  <ul id="tree">
+    <li>
+      <span>Животные</span>
+      <ul>
+        <li>
+          <span>Млекопитающие</span>
+          <ul>
+            <li><span>Коровы</span></li>
+            <li><span>Ослы</span></li>
+            <li><span>Собаки</span></li>
+            <li><span>Тигры</span></li>
+          </ul>
+        </li>
+        <li>
+          <span>Другие</span>
+          <ul>
+            <li><span>Змеи</span></li>
+            <li><span>Птицы</span></li>
+            <li><span>Ящерицы</span></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <span>Рыбы</span>
+      <ul>
+        <li>
+          <span>Аквариумные</span>
+          <ul>
+            <li><span>Гуппи</span></li>
+            <li><span>Скалярии</span></li>
+          </ul>
+
+        </li>
+        <li>
+          <span>Морские</span>
+          <ul>
+            <li><span>Морская форель</span></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  
+
+  <table id="grid">
+    <thead>
+      <tr>
+        <th data-type="number">Возраст</th>
+        <th data-type="string">Имя</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>Вася</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Петя</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Женя</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Маша</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Илья</td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
-  <script src="./part2/events/01.foundation.js"></script>
+  <script src="./part2/events/02.event_delegation.js"></script>
 </body>
 </html>
