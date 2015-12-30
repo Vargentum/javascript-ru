@@ -4,91 +4,55 @@
   <meta charset="UTF-8">
   <!-- some comment -->
   <title>Learn javascript.ru</title>
+
   <style>
-    .tooltip {
-      position: fixed;
-      padding: 10px 20px;
-      border: 1px solid #b3c9ce;
-      border-radius: 4px;
-      text-align: center;
-      font: italic 14px/1.3 arial, sans-serif;
-      color: #333;
-      background: #fff;
-      box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+    #contents {
+      padding: 5px;
+      border: 1px green solid;
+    }
+
+    #largeImg {
+      border: solid 1px #ccc;
+      width: 550px;
+      height: 400px;
+      padding: 5px;
+    }
+
+    #thumbs a {
+      border: solid 1px #ccc;
+      width: 100px;
+      height: 100px;
+      padding: 3px;
+      margin: 2px;
+      float: left;
+    }
+
+    #thumbs a:hover {
+      border-color: #FF9900;
     }
   </style>
-
 </head>
 <body>
-  <button data-tooltip="Lorem ipsum dolor sit amet, consectetur adipisicing elit. In distinctio aliquam sapiente! Aut explicabo nulla tempora autem vero totam, facere, quam vitae quaerat blanditiis perferendis, quidem voluptatum. Quis, ut, amet.">Some lorem ipsum tooltip</button>
+  <div>
+    <p><img id="largeImg" src="https://js.cx/gallery/img1-lg.jpg" alt="Large image"></p>
 
-  <div id="msgContainer">
-    <div class="pane">
-      <h3>Лошадь</h3>
-      <p>Домашняя лошадь — животное семейства непарнокопытных, одомашненный и единственный сохранившийся подвид дикой лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</p>
-      <button data-tooltip="Some text" class="remove-button">[x]</button>
-    </div>
-    <div class="pane">
-      <h3>Осёл</h3>
-      <p>Домашний осёл или ишак — одомашненный подвид дикого осла, сыгравший важную историческую роль в развитии хозяйства и культуры человека. Все одомашненные ослы относятся к африканским ослам.</p>
-      <button data-tooltip="SOME <br/> html" class="remove-button">[x]</button>
-    </div>
-    <div class="pane">
-      <h3>Корова, а также пара слов о диком быке, о волах и о тёлках. </h3>
-      <p>Коро́ва — самка домашнего быка, одомашненного подвида дикого быка, парнокопытного жвачного животного семейства полорогих. Самцы вида называются быками, молодняк — телятами, кастрированные самцы — волами. Молодых (до первой стельности) самок называют
-        тёлками.
-      </p>
-      <button data-tooltip="security issue <script>alert('DANGER')</script>" class="remove-button">[x]</button>
+    <div id="thumbs">
+      <!-- При наведении на изображение показывается встроенная подсказка браузера (title) -->
+      <a href="https://js.cx/gallery/img2-lg.jpg" title="Image 2"><img src="https://js.cx/gallery/img2-thumb.jpg"></a>
+      <a href="https://js.cx/gallery/img3-lg.jpg" title="Image 3"><img src="https://js.cx/gallery/img3-thumb.jpg"></a>
+      <a href="https://js.cx/gallery/img4-lg.jpg" title="Image 4"><img src="https://js.cx/gallery/img4-thumb.jpg"></a>
+      <a href="https://js.cx/gallery/img5-lg.jpg" title="Image 5"><img src="https://js.cx/gallery/img5-thumb.jpg"></a>
+      <a href="https://js.cx/gallery/img6-lg.jpg" title="Image 6"><img src="https://js.cx/gallery/img6-thumb.jpg"></a>
     </div>
   </div>
 
+  <fieldset id="contents">
+    <legend>#contents</legend>
+    <p>
+      Как <a href="#">насчет</a> почитать <a href="http://wikipedia.org"><b>Википедию</b> сейчас</a>, или посетить <a href="http://w3.org"><i>W3.org</i></a> и узнать про современные стандарты?
+    </p>
+  </fieldset>
 
-  
-  <ul id="tree">
-    <li>
-      <span>Животные</span>
-      <ul>
-        <li>
-          <span>Млекопитающие</span>
-          <ul>
-            <li><span>Коровы</span></li>
-            <li><span>Ослы</span></li>
-            <li><span>Собаки</span></li>
-            <li><span>Тигры</span></li>
-          </ul>
-        </li>
-        <li>
-          <span>Другие</span>
-          <ul>
-            <li><span>Змеи</span></li>
-            <li><span>Птицы</span></li>
-            <li><span>Ящерицы</span></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <span>Рыбы</span>
-      <ul>
-        <li>
-          <span>Аквариумные</span>
-          <ul>
-            <li><span>Гуппи</span></li>
-            <li><span>Скалярии</span></li>
-          </ul>
-
-        </li>
-        <li>
-          <span>Морские</span>
-          <ul>
-            <li><span>Морская форель</span></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-
-  
 
   <table id="grid">
     <thead>
@@ -121,9 +85,8 @@
     </tbody>
   </table>
 
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <!-- <script src="./part2/events/02.event_delegation.js"></script> -->
-  <script src="./part2/events/03.behavior_pattern.js"></script>
+  <script src="./part2/events/04.broswer_default_handlers.js"></script>
 </body>
 </html>
