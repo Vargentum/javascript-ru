@@ -38,35 +38,53 @@ function task1 () {
   class Tooltip {
 
     constructor() {
-      init(parent)
+      this.tip = document.createElement('div')
+      this.tip.classList.add('tooltip')
     }
 
     destroy() {
-
+      document.body.removeChild(this.tip)
     }
 
-    init() {
+    _setRelativeTo(target) {
+      let targetCoords = target.getBoundingClientRect()
+      let top;
 
+      if (targetCoords.top > this.tip.offsetHeight) {
+        top = targetCoords.top - this.tip.offsetHeight + 'px'
+      } else {
+        top = targetCoords.bottom + 'px'
+      };
+      this.tip.style.top = top
+      this.tip.style.left = target.getBoundingClientRect().left + 'px'      
+    }
+
+    init(target, content) {
+      this.tip.innerHTML = content
+      document.body.appendChild(this.tip)
+      this._setRelativeTo(target)
     }
   }
-  const tip = new Tooltip()
+  
 
+  const tooltip = new Tooltip()
 
-  let tooltipShow = (evt) => {
+  let tooltipController = (type, evt) => {
     let target = evt.target
-    let content = target.dataset(tooltip)
+    let content = target.dataset.tooltip
 
     if (!content) return;
-    tip.init(target, content)
+
+    switch(type){
+      case 'show': tooltip.init(target, content)
+        break;
+      case 'hide': tooltip.destroy()
+        break;
+    }
   }
 
-  let tooltipHide = (evt) => {
-    
-    tip.destroy()
-  }
 
-
-  document.addEventListener('mouseover', showTooltip)
-  document.addEventListener('mouseout', hideTooltip)
+  document.addEventListener('mouseover', tooltipController.bind(this, 'show'))
+  document.addEventListener('mouseout', tooltipController.bind(this, 'hide'))
 }
 task1()
