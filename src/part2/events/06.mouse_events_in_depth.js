@@ -1,40 +1,60 @@
 /*
 
-  Two event types:
+Two event types:
 
-    Simple 
-      - mouseup
-      - mousedown
-      - mouseover (mouse appears over element)
-      - mouseout
-      - mousemove
+  Simple 
+    - mouseup
+    - mousedown
+    - mouseover (mouse appears over element)
+    - mouseout
+    - mousemove
 
-    Complex (consists of some simple)
-      - click (mousedown, mouseup, click)
-      - dbclick
-      - contextmenu
-
-
-  Event additional props
-
-    event.which - what mouse button was pressed
-      1 - left
-      2 - center
-      3 - right
+  Complex (consists of some simple)
+    - click (mousedown, mouseup, click)
+    - dbclick
+    - contextmenu
 
 
-    Keyboard modifiers - bool values, enabled when according button is pressed
-      
-      event.ctrlKey
-      event.altKey
-      event.shiftKey
-      event.metaKey
+Event additional props
 
+  event.which - what mouse button was pressed
+    1 - left
+    2 - center
+    3 - right
+
+
+  Keyboard modifiers - bool values, enabled when according button is pressed
     
-    Coords of mouse pointer
+    event.ctrlKey
+    event.altKey
+    event.shiftKey
+    event.metaKey
 
-      event.clientX / .clientY - relative to visible Window
-      event.pageX / .pageY - relative to whole document
+  
+  Coords of mouse pointer
+
+    event.clientX / .clientY - relative to visible Window
+    event.pageX / .pageY - relative to whole document
+
+
+
+
+Mouse movement:
+
+  mouseover / mouseout - triggers when mouse "appears / go out" from element
+
+    - event.relatedTarget - element that mouse 'come from / go to'
+    - bubbles (delegation support)
+    - parent -> child invokes additional mouseout (from parent)
+
+  mouseenter / mouseleave - simple alternative to mouseover / mouseout
+    - no bubbling
+    - no parent -> child additional events
+    
+  
+  relatedTarget === null, when mouse comes from position, behind the browser window
+
+
 */
 
 
@@ -112,5 +132,79 @@ function task1 () {
 task1()
 
 
-/**/
+/*Task 2
+Напишите JS-код, который будет показывать всплывающую подсказку над элементом, если у него есть атрибут data-tooltip.
+Необходима поддержка вложенных элементов. При наведении показывается самая вложенная подсказка.
+upgrade of 03.behavior_pattern.js task1
+*/
+
+
+function task2 () {
+
+  class Tooltip {
+
+    constructor() {
+      this.tip = document.createElement('div')
+      this.tip.classList.add('tooltip')
+    }
+
+    destroy() {
+      document.body.removeChild(this.tip)
+    }
+
+    _setRelativeTo(target) {
+      let targetCoords = target.getBoundingClientRect()
+      let top;
+
+      if (targetCoords.top > this.tip.offsetHeight) {
+        top = targetCoords.top - this.tip.offsetHeight + 'px'
+      } else {
+        top = targetCoords.bottom + 'px'
+      };
+      this.tip.style.top = top
+      this.tip.style.left = target.getBoundingClientRect().left + 'px'      
+    }
+
+    init(target, content) {
+      this.tip.innerHTML = content
+      document.body.appendChild(this.tip)
+      this._setRelativeTo(target)
+    }
+  }
+  
+
+  const tooltip = new Tooltip()
+
+  let tooltipController = (type, evt) => {
+    let target = evt.target
+
+    let getTipContent = elem => {
+      while(target.parentElement){
+        target = target.parentElement
+        let ttp = target.dataset.tooltip
+        if (ttp) return ttp
+      }
+      return
+    }
+    let targetContent = getTipContent(target)
+
+    if (!targetContent) return;
+
+    switch(type){
+      case 'show':
+        tooltip.init(target, targetContent)
+        break;
+      case 'hide':
+        let relTargetContent = getTipContent(evt.relatedTarget)
+        if (!relTargetContent && evt.relatedTarget.parentElement === target) return
+        tooltip.destroy()
+        break;
+    }
+  }
+
+
+  document.addEventListener('mouseover', tooltipController.bind(this, 'show'))
+  document.addEventListener('mouseout', tooltipController.bind(this, 'hide'))
+}
+task2()
 
