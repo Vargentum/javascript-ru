@@ -59,13 +59,14 @@ function task1 () {
   let handler = (evt) => {
     let trgt = evt.target
     let mod = 'selected'
+    let items = event.currentTarget.children
 
-    let findItemIdx = itm => _.indexOf(list.children, itm)
+    let findItemIdx = itm => _.indexOf(items, itm)
 
     let hltBulk = itm => {
       let itmIdx = findItemIdx(itm)
 
-      _(list.children)
+      _(items)
         .filter((i, idx) => {
           if (lastSelectedIdx > itmIdx) {
             return idx <= lastSelectedIdx && idx >= itmIdx
@@ -79,7 +80,7 @@ function task1 () {
     }
 
     let hltCurrent = itm => {
-      _.forEach(list.children, item => {
+      _.forEach(items, item => {
           item.classList.remove(mod)
         })
       itm.classList.add(mod)
@@ -109,3 +110,7 @@ function task1 () {
 
 }
 task1()
+
+
+/**/
+
