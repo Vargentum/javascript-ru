@@ -4,19 +4,58 @@
   <meta charset="UTF-8">
   <!-- some comment -->
   <title>Learn javascript.ru</title>
+  
+  <style>
+  
+    #container {
+      height:500px;
+      border: 1px solid red;
+      position:  relative;
+    }
+
+    #sliderWrap {
+      padding: 20px;
+      border: 1px solid red;
+      position: relative;
+    }
+    #slider {
+      width: 300px;
+      height: 20px;
+      background-color: #bbb;
+      margin: 0 auto;
+      position: relative;
+    }
+    #sliderMark {
+      width: 15px;
+      height: 25px;
+      background-color: red;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+  
+  </style>
 
 </head>
 <body>
 
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
+  <div id="container">
+    
+    <img src="https://js.cx/clipart/ball.svg"
+         width="40" height="40" id="ball" />
 
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
+  </div>
+
+  <div id="sliderWrap">
+    <div id="slider">
+      <div id="sliderMark"></div>
+    </div>
+  </div>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
-  <script src="./unsorted/js-smells/03.complex_switch.js"></script>
+  <script src="./part2/events/07.dnd.js"></script>
 </body>
 </html>
