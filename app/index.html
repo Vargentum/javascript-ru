@@ -4,19 +4,77 @@
   <meta charset="UTF-8">
   <!-- some comment -->
   <title>Learn javascript.ru</title>
+  
+  <style>
+    .text {
+      width: 300px;
+      margin: 0 auto;
+    }
+    
+    #scroll-helper {
+      position: fixed;
+      left: 20px;  
+      top: 20px;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      cursor: pointer
+    }
+    #scroll-helper.is-up {
+      border-bottom: 20px solid green;
+    }
+    #scroll-helper.is-down {
+      border-top: 20px solid green;
+    }
+    #scroll-helper.is-hidden {
+      visibility: hidden;
+    }
+  </style>
 
 </head>
 <body>
 
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
+  <span id="scroll-helper" class="is-hidden"></span>
 
-  <div class="circle"></div>
-  <div class="circle"></div>
-  <div class="circle"></div>
+  <div class="text">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque velit cupiditate consequuntur, explicabo dolores, libero rem quaerat deserunt placeat, quas culpa tenetur obcaecati. Nisi harum, perferendis modi, illo optio nemo!    
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
-  <script src="./unsorted/js-smells/03.complex_switch.js"></script>
+  <script src="./part2/events/08.scroll.js"></script>
 </body>
 </html>
