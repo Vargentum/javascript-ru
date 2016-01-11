@@ -76,6 +76,39 @@ function task1 () {
 // task1()
 
 
+/*More correct desicion with keypress*/
+
+function task1correct () {
+  function getChar(event) {
+    if (event.which == null) { // IE
+      if (event.keyCode < 32) return null; // спец. символ
+      return String.fromCharCode(event.keyCode)
+    }
+
+    if (event.which != 0 && event.charCode != 0) { // все кроме IE
+      if (event.which < 32) return null; // спец. символ
+      return String.fromCharCode(event.which); // остальные
+    }
+
+    return null; // спец. символ
+  }
+
+  let isSpecialMode = (e) => e.metaKey || e.shiftKey || e.altKey || e.ctrlKey
+  let isOutside = (char, x, y) => char < x || char > y
+
+
+  let filterNonDigits = e => {
+    let char = getChar(e)
+    if (isSpecialMode(e) || isOutside(char, '0','9')) {
+      e.preventDefault()
+    };
+  }
+
+  numbersOnly.addEventListener('keypress', filterNonDigits)
+}
+task1correct()
+
+
 
 /*Task 2
 Создайте функцию runOnKeys(func, code1, code2, ... code_n), 
