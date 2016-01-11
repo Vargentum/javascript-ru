@@ -46,7 +46,7 @@ function task2 () {
   let lastPosition = null
   let isReturned = false
 
-  let helperClickHandler = (type, e) => {
+  let handleHelperClick = (type, e) => {
     switch(type){
       case 'toUp':
         window.scrollTo(0, 0)
@@ -88,11 +88,11 @@ function task2 () {
         left: window.pageXOffset,
       }
       isReturned = true
-      helper.onclick = helperClickHandler.bind(this, 'toUp')
+      helper.onclick = handleHelperClick.bind(this, 'toUp')
     } 
     else if (scrollY === 0  && isReturned) {
       activateHelperAs('toDown')
-      helper.onclick = helperClickHandler.bind(this, 'toDown')
+      helper.onclick = handleHelperClick.bind(this, 'toDown')
     }
     else if (scrollY <= docHeight) {
       activateHelperAs('hidden')
@@ -105,3 +105,53 @@ function task2 () {
 }
 task2()
 
+
+
+/*
+Напишите код, который при прокрутке окна загружает ставшие видимыми изображения.
+
+То есть, как только изображение попало в видимую часть документа – 
+в src нужно прописать правильный URL из realsrc.
+
+- При начальной загрузке некоторые изображения должны быть видны сразу, до прокрутки.
+
+- Некоторые изображения могут быть обычными, без realsrc.
+  Их код не должен трогать вообще.
+
+- Также код не должен перегружать уже показанное изображение.
+
+- Желательно предусмотреть загрузку изображений не только видимых сейчас,
+  но и на страницу вперед и назад от текущего места.
+
+*/
+
+function task3 () {
+  let cachedSrc = 'realsrc'
+  let $$ = (nodes) => Array.prototype.slice.call(nodes)
+
+  let loadImg = (img) => {
+    img.setAttribute('src', img.getAttribute(cachedSrc))
+    img.removeAttribute(cachedSrc)
+  }
+
+  let loadImages = (visibleArea) => {
+    $$(document.querySelectorAll(`img[${cachedSrc}]`))
+      .forEach(img => {
+        let imgTop = img.getBoundingClientRect().top + pageYOffset
+        if (imgTop > visibleArea.bottom || imgTop < visibleArea.top) return
+        loadImg(img)
+    })  
+  }
+
+  let loadImagesHandler = (e) => {
+    let visibleArea = {
+      top: e.pageYOffset - window.innerHeight,
+      bottom: e.pageYOffset + window.innerHeight
+    }
+    loadImages(visibleArea)
+  }
+
+  loadImagesHandler(window) // little tricky
+  document.addEventListener('scroll', loadImagesHandler)
+}
+task3()
