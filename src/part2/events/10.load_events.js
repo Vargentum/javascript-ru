@@ -165,7 +165,7 @@ function task3 () {
   preloadSources('img', sources, testLoaded.bind(null, 'after'));
 
 }
-task3()
+// task3()
 
 
 
