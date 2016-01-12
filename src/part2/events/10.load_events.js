@@ -74,38 +74,68 @@ http://plnkr.co/edit/IHHqDRA0IPrW58SqJvfx?p=preview
 */
 
 
-function task2 () {
-  let preloadImages = (sources, callback) => {
+
+
+/*
+
+Создайте функцию addScript(src, callback),
+которая загружает скрипт с данным src, и после его загрузки 
+и выполнения вызывает функцию callback.
+
+Сделал через модификацию функции из task2
+*/
+
+
+function task3 () {
+
+  let Source = function (type, src) {
+    let source = document.createElement(type)
+    source.src = src
+    document.body.appendChild(source)
+    return source
+  }
+  
+  let preloadSources = (type, sources, callback) => {
     let promises = []
 
-    let insertImg = (src, loader) => {
-      let img = document.createElement('img')
-      img.src = src
-      document.body.appendChild(img)
-      img.onload = loader
-    }
+    sources.forEach(src => {
+      let source = Source(type, src)
 
-    sources.forEach((src, idx) => {
-      insertImg(src, e => {
-        promises.push(Promise.resolve('loaded'))  
-
-        if (idx !== sources.length - 1) return
-
-        Promise.all(promises).then(() => {
-          callback()
-        })
-      })
+      promises.push(new Promise(
+        (resolve, reject) => {
+          source.onload = () => resolve(`Loaded from ${source.src}`)
+          source.onerror = () => reject(`Not loaded from ${source.src}`)
+        }
+      ))
     })
+
+    Promise.all(promises).then(
+      () => {
+        callback()
+      },
+      (error) => {
+        throw new Error(error)
+      }
+    )
   }
 
+  preloadSources('script', 
+    [
+     "https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.12/d3.min.js",
+     "https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"
+    ],
+    () => {
+      console.log(d3)
+      console.log(Raphael(10, 50, 320, 200))
+    }
+  )
 
 
-  // ---------- Проверка ----------
 
-  /* файлы для загрузки */
+  /*Part 3.2 (images)*/
+
   var sources = [
     "https://js.cx/images-load/1.jpg",
-    "https://js.cx/imaged/1.jpg",
     "https://js.cx/images-load/2.jpg",
     "https://js.cx/images-load/3.jpg",
     "https://upload.wikimedia.org/wikipedia/commons/c/cf/Frog_on_river_4000x3000_26-09-2010_11-01am_2mb.jpg"
@@ -131,73 +161,9 @@ function task2 () {
   // до загрузки - выведет 0
   testLoaded('before');
 
-  // после загрузки - выведет 300
-  preloadImages(sources, testLoaded.bind(null, 'after'));
+  // после загрузки - выведет суммарную ширину всех загруженных картинок
+  preloadSources('img', sources, testLoaded.bind(null, 'after'));
 
-}
-// task2()
-
-
-
-
-/*
-
-Создайте функцию addScript(src, callback),
-которая загружает скрипт с данным src, и после его загрузки 
-и выполнения вызывает функцию callback.
-
-Сделал через модификацию функции из task2
-*/
-
-
-function task3 () {
-  
-  let preloadSources = (type, sources, callback) => {
-    let promises = []
-
-    let loadSource = (src, loader, errorer) => {
-      let source = document.createElement(type)
-      source.src = src
-      document.body.appendChild(source)
-      source.onload = loader
-      source.onerror = errorer
-    }
-
-    sources.forEach((src, idx) => {
-      loadSource(src, 
-        // load
-        e => {
-          promises.push(Promise.resolve('loaded'))  
-
-          if (idx !== sources.length - 1) return
-
-          Promise.all(promises).then(
-            () => {
-              console.log(promises)
-              callback()
-            }),
-            (error) => {
-              throw new Error(error)
-            }
-        },
-        // error
-        e => {
-          promises.push(Promise.reject('error'))  
-        }
-      )
-    })
-  }
-
-  preloadSources('script', 
-    [
-     "https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.12/d3.min.js",
-     "https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"
-    ],
-    () => {
-      console.log(d3)
-      console.log(Raphael(10, 50, 320, 200))
-    }
-  )
 }
 task3()
 
