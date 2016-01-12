@@ -1,29 +1,29 @@
 /*
 
-  Promice: special object that help to work with async code
+  Promise: special object that help to work with async code
 
   it contains itself states:
     - pending
     - resolve
     - reject
 
-  
+
   Method to attach handlers
     - .then(onResolve, onReject)
 
   constructor
-    let promice = new Promice()
+    let promise = new Promise()
 
   it accepts one function as argument
-  function contain two parameters 
+  function contain two parameters
     - resolve(smth)
     - reject(smth)
 
     these are functions with single argument,
-    that contains result or Error that handles inside 
+    that contains result or Error that handles inside
     .then(h1, h2) handlers
 
-  Tips: 
+  Tips:
     - best practice to translate Error in reject parameter
     - prom
 
@@ -31,19 +31,19 @@
 */
 
 function example1 () {
-  
-  let promice = new Promise((resolve, reject) => {
+
+  let promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (!true) {
-        resolve('success') //callback  
+        resolve('success') //callback
       } else{
         reject(new Error('fail')) //callback
       };
-      
+
     }, 2000)
   });
 
-  promice.then(
+  promise.then(
     result => { //handler
       console.log(`Result is ${result}`)
     },
@@ -59,18 +59,18 @@ function example1 () {
 /*
   Promicification:
 
-  add wrapper to some function, to return promice instead
+  add wrapper to some function, to return promise instead
 
 
   TODO:
-    
-    make decorator httpGet(url) that returns promice
+
+    make decorator httpGet(url) that returns promise
 
     create new XMLHttpRequest
     open with .open('QUERY', url, true)
     fill onload method
       if status 200
-        resolve promice with context response
+        resolve promise with context response
 
       else
         reject error
@@ -127,41 +127,41 @@ function example2 () {
 
 
 function example3 () {
-  
+
   /*
-    Promice chaining
+    Promise chaining
     - when done one async request, make next
 
-    1.if .then() returns promice, its result 
+    1.if .then() returns promise, its result
       will be applied to next .then()
 
     2.1 in this case, you can't attach next .then()
         because in contain async code
 
-    2.2 return resolved (or rejected) promice for correct next() chaining
+    2.2 return resolved (or rejected) promise for correct next() chaining
   */
 
   httpGet("users/me/user.json")
-    .then(response => { 
+    .then(response => {
       let user = JSON.parse(response)
-      return user 
+      return user
     })
     .then(user => {
-      return httpGet(`http://github.com/users/${user.name}`)        
+      return httpGet(`http://github.com/users/${user.name}`)
     }) // 1
     .then(gitHubUser => {
       let user = JSON.parse(gitHubUser)
-      let img = new Image() 
+      let img = new Image()
 
       img.src = user.avatar_url
       document.body.append(img)
 
       // setTimeout(() => {img.remove()}, 1000) // 2.1
-      
+
       return new Promise((resolve, reject) => { // 2.2
         setTimeout(() => {
           img.remove()
-          resolve()  
+          resolve()
         }, delay)
       });
     })
