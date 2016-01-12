@@ -5,18 +5,41 @@
   <!-- some comment -->
   <title>Learn javascript.ru</title>
   
+  <style>
+    .error {
+      background: red;
+    }
+
+    .placeholder {
+      color: blue;
+    }
+    
+    .placeholder-tooltip {
+      color: blue;
+      position: absolute;
+    }
+  
+
+  </style>
+
 </head>
 <body>
 
 
-  <select id="select">
-    <option value="Rock">Рок</option>
-    <option value="Blues" selected>Блюз</option>
-  </select>
+  <div>Возраст:
+    <input type="text" id="age">
+  </div>
+
+  <form id="placeholderWrap">
+    <p>Красивый плейсхолдер</p>
+    <input type="email" data-placeholder="E-mail" class="placeholder">
+    <input type="text" data-placeholder="Your name" class="placeholder">
+    <input type="text" placeholder="Common placeholder">
+  </form>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="./_useful_functions.js"></script>
-  <script src="./part2/forms/01.form_navigation.js"></script>
+  <script src="./part2/forms/02.focus_blur_events.js"></script>
 </body>
 </html>
