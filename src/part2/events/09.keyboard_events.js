@@ -106,7 +106,7 @@ function task1correct () {
 
   numbersOnly.addEventListener('keypress', filterNonDigits)
 }
-task1correct()
+// task1correct()
 
 
 
@@ -159,4 +159,4 @@ function task2 () {
   runOnKeys( () =>console.log('YN!'), "Y".charCodeAt(0), "N".charCodeAt(0))
 
 }
-task2()
+// task2()

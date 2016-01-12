@@ -103,7 +103,7 @@ function task2 () {
 
   document.addEventListener('scroll', setHelperBehavior)
 }
-task2()
+// task2()
 
 
 
@@ -127,7 +127,6 @@ task2()
 
 function task3 () {
   let cachedSrc = 'realsrc'
-  let $$ = (nodes) => Array.prototype.slice.call(nodes)
 
   let loadImg = (img) => {
     img.setAttribute('src', img.getAttribute(cachedSrc))
@@ -135,7 +134,7 @@ function task3 () {
   }
 
   let loadImages = (visibleArea) => {
-    $$(document.querySelectorAll(`img[${cachedSrc}]`))
+    $$(`img[${cachedSrc}]`)
       .forEach(img => {
         let imgTop = img.getBoundingClientRect().top + pageYOffset
         if (imgTop > visibleArea.bottom || imgTop < visibleArea.top) return
@@ -154,4 +153,4 @@ function task3 () {
   loadImagesHandler(window) // little tricky
   document.addEventListener('scroll', loadImagesHandler)
 }
-task3()
+// task3()
