@@ -134,7 +134,7 @@ function task3 () {
   }
 
   let loadImages = (visibleArea) => {
-    $$(`img[${cachedSrc}]`)
+    $(`img[${cachedSrc}]`)
       .forEach(img => {
         let imgTop = img.getBoundingClientRect().top + pageYOffset
         if (imgTop > visibleArea.bottom || imgTop < visibleArea.top) return

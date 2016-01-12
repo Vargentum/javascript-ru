@@ -41,14 +41,14 @@ function task1 () {
 
   let handleImgLoad = e => {
       let img = e.currentTarget
-      $$('.img-replace').filter(c => c.dataset.alt === img.src)
+      $('.img-replace').filter(c => c.dataset.alt === img.src)
                         .forEach(c => {
                           c.parentElement.replaceChild(img, c)
                           img.classList.add('img-replace')
                         });
   }
 
-  $$('img').forEach(img => {
+  $('img').forEach(img => {
     img.addEventListener('load', handleImgLoad)
   })
 }
