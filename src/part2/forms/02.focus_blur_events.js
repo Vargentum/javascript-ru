@@ -229,28 +229,22 @@ task3()
 */
 
 function task4 () {
-  const table = document.getElementById('bagua-table')
-
   const Editable = function(origin) {
     this.parent = origin
     this.area = document.createElement('textarea')
     this.area.classList.add('cell-editable')
     this.area.value = origin.innerHTML
-
   }
-
   Editable.prototype.destroy = function () {
     this.parent.removeChild(this.area)
     this.parent.removeChild(this.controls)
     return this
   }
-
   Editable.prototype.init = function () {
     this.parent.appendChild(this.area)
     this.parent.appendChild(this.controls)
     return this
   }
-
   Editable.prototype.createControls = function(controlsTemplate) {
     this.controls = document.createElement('div')
     this.controls.classList.add('editable-control-wrap')
@@ -266,6 +260,7 @@ function task4 () {
   }
 
   let activeCell = null
+  const table = document.getElementById('bagua-table')
 
   table.addEventListener('click', e => {
     let cell = e.target
