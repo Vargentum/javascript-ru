@@ -30,6 +30,13 @@
       outline: 1px dashed black;
     }
 
+    [data-editable] {
+      border: 1px solid red;
+      height: 50px;
+      width: 250px;
+      padding: 5px 10px;
+    }
+
   </style>
 
 </head>
@@ -62,6 +69,11 @@
     \  Y  /-'
      nn^nn
   </pre>
+
+
+  <p>Press ctrl+E / S to edit / save area content.</p>
+  <div data-editable tabIndex="-1"></div>
+  <div data-editable tabIndex="-1"></div>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>

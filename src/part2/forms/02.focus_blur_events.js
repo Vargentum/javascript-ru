@@ -104,7 +104,10 @@ task1()
  Кликните по мышонку. Затем нажимайте клавиши со стрелками, и он будет двигаться.
 В этой задаче запрещается ставить обработчики куда-либо, кроме элемента #mouse.
 Можно изменять атрибуты и классы в HTML.
+
+http://plnkr.co/edit/kLh0yqbi6ircDNH4MSdW?p=preview
 */
+
 function task2 () {
   const mouse = document.getElementById('mouse')
   const directions = ['left', 'top', 'right', 'bottom']
@@ -135,3 +138,64 @@ function task2 () {
   })
 }
 task2()
+
+
+
+
+/*Task 3
+
+Создайте <div>, который при нажатии Ctrl+E превращается в <textarea>.
+Изменения, внесенные в поле, можно сохранить обратно в <div> сочетанием клавиш Ctrl+S, при этом 
+<div> получит в виде HTML содержимое <textarea>.
+
+Если же нажать Esc, то <textarea> снова превращается в <div>, изменения не сохраняются.
+*/
+
+function task3 () {
+
+  const checkHotkey = (e, key) => e.keyCode === key.toUpperCase().charCodeAt(0) && e.ctrlKey
+  const checkEscapeKey = (e) => e.keyCode === 27
+
+  const Editable = function(type, content, keydownHandler, origin) {
+    let elem = document.createElement(type)
+
+    for (let key in origin.attributes) {
+      elem.attributes[key] = origin.attributes[key]
+      debugger
+    }
+
+    if (content) {
+      elem.value ? elem.value = content : elem.textContent = content  
+    }
+    elem.addEventListener('keydown', keydownHandler)
+    return elem
+  }
+
+  $('[data-editable]').forEach(elem => {
+
+    let handler = function (e) {
+      let editable = null
+      // editing
+      if (checkHotkey(e, "E")) {
+        editable = new Editable('textarea', this.textContent, handler, this)
+      } 
+      // saving
+      else if (checkHotkey(e, "S")) {
+        editable = new Editable('div', this.value, handler, this)
+      }
+      // unsaved
+      else if (checkEscapeKey(e)) {
+        editable = new Editable('div', null, handler, this)
+      }
+      else {return}
+      this.parentElement.replaceChild(editable, this)
+    }
+
+    elem.addEventListener('keydown', handler)
+  })
+
+}
+task3()
+
+
+
