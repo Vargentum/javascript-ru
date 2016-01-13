@@ -21,12 +21,6 @@ gulp.task 'coffee', ->
 gulp.task 'javascript', ->
   gulp.src './src/**/*.js'
     .pipe($.plumber())
-    .pipe($.jshint(
-      eqeqeq: on
-      esnext: on
-      curly: on
-      asi: on  # disable semicolons varning
-    ))
     .pipe($.sourcemaps.init())
     .pipe($.babel(
       presets: ['es2015']
