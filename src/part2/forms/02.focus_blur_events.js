@@ -152,43 +152,58 @@ task2()
 */
 
 function task3 () {
+  const types = {
+    static: 'div',
+    editable: 'textarea'
+  }
 
   const checkHotkey = (e, key) => e.keyCode === key.toUpperCase().charCodeAt(0) && e.ctrlKey
   const checkEscapeKey = (e) => e.keyCode === 27
 
-  const Editable = function(type, content, keydownHandler, origin) {
-    let elem = document.createElement(type)
+  const Editable = function(content, keydownHandler) {
+    let elem = document.createElement(types.editable)
 
-    for (let key in origin.attributes) {
-      elem.attributes[key] = origin.attributes[key]
-      debugger
-    }
-
-    if (content) {
-      elem.value ? elem.value = content : elem.textContent = content  
-    }
+    elem.setAttribute('data-editable', '')
+    elem.setAttribute('tabIndex', -1)
     elem.addEventListener('keydown', keydownHandler)
+    elem.value = content
     return elem
   }
 
+  const Static = function (content, keydownHandler) {
+    let elem = document.createElement(types.static)
+
+    elem.setAttribute('data-editable', '')
+    elem.setAttribute('tabIndex', -1)
+    elem.addEventListener('keydown', keydownHandler)
+    elem.textContent = content
+    return elem
+  }
+
+
   $('[data-editable]').forEach(elem => {
+    let lastSavedTxt = ''
 
     let handler = function (e) {
-      let editable = null
-      // editing
-      if (checkHotkey(e, "E")) {
-        editable = new Editable('textarea', this.textContent, handler, this)
-      } 
+      let replacer = null
+      // editing static
+      if (checkHotkey(e, "E") && this.tagName.toLowerCase() === types.static) {
+        replacer = new Editable(this.textContent, handler)
+      }
       // saving
       else if (checkHotkey(e, "S")) {
-        editable = new Editable('div', this.value, handler, this)
+        lastSavedTxt = this.value
+        replacer = new Static(this.value, handler)
       }
       // unsaved
       else if (checkEscapeKey(e)) {
-        editable = new Editable('div', null, handler, this)
+        replacer = new Static(lastSavedTxt, handler)
       }
+      // ignore other keys
       else {return}
-      this.parentElement.replaceChild(editable, this)
+
+      this.parentElement.replaceChild(replacer, this)
+      replacer.focus()
     }
 
     elem.addEventListener('keydown', handler)
