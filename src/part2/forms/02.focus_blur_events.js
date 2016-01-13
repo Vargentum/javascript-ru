@@ -214,3 +214,94 @@ task3()
 
 
 
+
+/*Task 4
+Сделать ячейки таблицы td редактируемыми по клику.
+
+При клике – ячейка <td> превращается в редактируемую, можно менять HTML.
+
+Размеры ячеек при этом не должны меняться.
+В один момент может редактироваться одна ячейка.
+
+При редактировании под ячейкой появляются кнопки для приема и отмена редактирования,
+только клик на них заканчивает редактирование.
+
+*/
+
+function task4 () {
+  const table = document.getElementById('bagua-table')
+
+  const Editable = function(origin) {
+    this.parent = origin
+    this.area = document.createElement('textarea')
+    this.area.classList.add('cell-editable')
+    this.area.value = origin.innerHTML
+
+  }
+
+  Editable.prototype.destroy = function () {
+    this.parent.removeChild(this.area)
+    this.parent.removeChild(this.controls)
+    return this
+  }
+
+  Editable.prototype.init = function () {
+    this.parent.appendChild(this.area)
+    this.parent.appendChild(this.controls)
+    return this
+  }
+
+  Editable.prototype.createControls = function(controlsTemplate) {
+    this.controls = document.createElement('div')
+    this.controls.classList.add('editable-control-wrap')
+    
+    controlsTemplate.forEach(control => {
+      let btn = document.createElement('button')
+      btn.classList.add('editable-control')
+      btn.textContent = control.name
+      btn.onclick = control.handler
+      this.controls.appendChild(btn)
+    })
+    return this
+  }
+
+  let activeCell = null
+
+  table.addEventListener('click', e => {
+    let cell = e.target
+    let isValidCell = (cell) => activeCell === cell || activeCell === null
+
+    if (!isValidCell(cell) || cell.tagName !== 'TD') return;
+
+    activeCell = cell
+    let lastSavedContent = cell.innerHTML
+    let editable = new Editable(cell)
+    let area = editable.area
+
+    editable
+      .createControls([
+        {
+          name: 'Save',
+          handler: e => {
+            editable.destroy()
+            activeCell = null
+            cell.innerHTML = area.value
+          }
+        },
+        {
+          name: 'Cancel',
+          handler: e => {
+            editable.destroy()
+            activeCell = null
+            cell.innerHTML = lastSavedContent
+          }
+        }
+      ])
+      .init()
+  })
+    
+}
+task4()
+
+
+
