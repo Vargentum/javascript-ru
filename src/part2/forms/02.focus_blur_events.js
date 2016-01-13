@@ -243,6 +243,7 @@ function task4 () {
   Editable.prototype.init = function () {
     this.parent.appendChild(this.area)
     this.parent.appendChild(this.controls)
+    this.area.focus()
     return this
   }
   Editable.prototype.createControls = function(controlsTemplate) {
@@ -259,19 +260,17 @@ function task4 () {
     return this
   }
 
-  let activeCell = null
+  let isEditing = false
   const table = document.getElementById('bagua-table')
 
   table.addEventListener('click', e => {
     let cell = e.target
-    let isValidCell = (cell) => activeCell === cell || activeCell === null
 
-    if (!isValidCell(cell) || cell.tagName !== 'TD') return;
+    if (isEditing || cell.tagName !== 'TD') return;
 
-    activeCell = cell
+    isEditing = true
     let lastSavedContent = cell.innerHTML
     let editable = new Editable(cell)
-    let area = editable.area
 
     editable
       .createControls([
@@ -279,15 +278,15 @@ function task4 () {
           name: 'Save',
           handler: e => {
             editable.destroy()
-            activeCell = null
-            cell.innerHTML = area.value
+            isEditing = false
+            cell.innerHTML = editable.area.value
           }
         },
         {
           name: 'Cancel',
           handler: e => {
             editable.destroy()
-            activeCell = null
+            isEditing = false
             cell.innerHTML = lastSavedContent
           }
         }
