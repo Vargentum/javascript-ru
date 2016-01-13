@@ -18,7 +18,17 @@
       color: blue;
       position: absolute;
     }
-  
+
+    #mouse {
+      display: inline-block;
+      cursor: pointer;
+      margin: 0;
+      position: relative;
+    }
+
+    #mouse:focus {
+      outline: 1px dashed black;
+    }
 
   </style>
 
@@ -36,6 +46,22 @@
     <input type="text" data-placeholder="Your name" class="placeholder">
     <input type="text" placeholder="Common placeholder">
   </form>
+
+
+
+  <p>Кликните на мышонка и передвигайте его, нажимая клавиши со стрелками.</p>
+
+  <pre id="mouse" tabIndex="-1">
+     _   _
+    (q\_/p)
+     /. .\
+    =\_t_/=   __
+     /   \   (
+    ((   ))   )
+    /\) (/\  /
+    \  Y  /-'
+     nn^nn
+  </pre>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>

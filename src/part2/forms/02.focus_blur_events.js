@@ -97,3 +97,41 @@ task1()
   useful, if you need to show 2 or more `tips`
 */
 
+
+
+
+/*Task 2
+ Кликните по мышонку. Затем нажимайте клавиши со стрелками, и он будет двигаться.
+В этой задаче запрещается ставить обработчики куда-либо, кроме элемента #mouse.
+Можно изменять атрибуты и классы в HTML.
+*/
+function task2 () {
+  const mouse = document.getElementById('mouse')
+  const directions = ['left', 'top', 'right', 'bottom']
+  const isArrow = (type, code) => {
+    switch(type){
+      case 'left'   : return code === 37
+      case 'top'    : return code === 38
+      case 'right'  : return code === 39
+      case 'bottom' : return code === 40
+      default       : return false
+    }
+  }
+  const shift = (elem, dir, step=25) => {
+    switch(dir){
+      case 'left'   : elem.style.left = (parseInt(elem.style.left) || 0) - step + 'px'; break
+      case 'right'  : elem.style.left = (parseInt(elem.style.left) || 0) + step + 'px'; break
+      case 'top'    : elem.style.top = (parseInt(elem.style.top) || 0) - step + 'px'; break
+      case 'bottom' : elem.style.top = (parseInt(elem.style.top) || 0) + step + 'px'; break
+      default       : return false
+    }
+  }
+
+  mouse.addEventListener('keydown', function (e) {
+    directions.forEach(dir => {
+      if (!isArrow(dir, e.keyCode)) return
+      shift(this, dir)
+    })
+  })
+}
+task2()
