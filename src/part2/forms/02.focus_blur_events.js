@@ -156,25 +156,25 @@ function task3 () {
     static: 'div',
     editable: 'textarea'
   }
-
   const checkHotkey = (e, key) => e.keyCode === key.toUpperCase().charCodeAt(0) && e.ctrlKey
   const checkEscapeKey = (e) => e.keyCode === 27
+  const cloneAs = (src, type) => {
+    let clone = document.createElement(type)
+    $$(src.attributes).forEach(attr => {
+      clone.setAttribute(attr.name, attr)
+    })
+    return clone
+  }
 
-  const Editable = function(content, keydownHandler) {
-    let elem = document.createElement(types.editable)
-
-    elem.setAttribute('data-editable', '')
-    elem.setAttribute('tabIndex', -1)
+  const Editable = function(content, keydownHandler, src) {
+    let elem = cloneAs(src, 'textarea')
     elem.addEventListener('keydown', keydownHandler)
     elem.value = content
     return elem
   }
 
-  const Static = function (content, keydownHandler) {
-    let elem = document.createElement(types.static)
-
-    elem.setAttribute('data-editable', '')
-    elem.setAttribute('tabIndex', -1)
+  const Static = function (content, keydownHandler, src) {
+    let elem = cloneAs(src, 'div')
     elem.addEventListener('keydown', keydownHandler)
     elem.textContent = content
     return elem
@@ -188,16 +188,16 @@ function task3 () {
       let replacer = null
       // editing static
       if (checkHotkey(e, "E") && this.tagName.toLowerCase() === types.static) {
-        replacer = new Editable(this.textContent, handler)
+        replacer = new Editable(this.textContent, handler, this)
       }
       // saving
       else if (checkHotkey(e, "S")) {
         lastSavedTxt = this.value
-        replacer = new Static(this.value, handler)
+        replacer = new Static(this.value, handler, this)
       }
       // unsaved
       else if (checkEscapeKey(e)) {
-        replacer = new Static(lastSavedTxt, handler)
+        replacer = new Static(lastSavedTxt, handler, this)
       }
       // ignore other keys
       else {return}
@@ -297,5 +297,62 @@ function task4 () {
 }
 task4()
 
+
+
+/*Task 5
+  Создайте для <input type="password"> красивый, стилизованный плейсхолдер, например (кликните на тексте):
+  
+  Пропустил: task1 аналогичный, только сложнее
+*/
+
+
+
+
+/*Task 6
+  Создайте поле, которое будет предупреждать пользователя, если включен CapsLock. Выключение CapsLock уберёт предупреждение.
+
+*/
+
+function task6 () {
+  let Alert = function (text) {
+    let alert = document.createElement('span')
+    alert.classList.add('error-alert')
+    alert.textContent = text
+    return alert
+  }
+  const capsLockCode = 20
+  
+  $('[data-capslock-detect]').forEach(input => {
+    let alert = null
+    
+    input.onkeydown = function (e) {
+      if (e.keyCode !== capsLockCode) return
+      alert = new Alert('Capslock enabled!')
+      this.parentElement.appendChild(alert)
+    }
+
+    input.onkeyup = function(e) {
+      if (e.keyCode !== capsLockCode || !alert) return
+      this.parentElement.removeChild(alert)
+    }
+
+    input.onblur = function(e) {
+      if (!alert) return
+      this.parentElement.removeChild(alert)
+    }
+
+    input.onfocus = function(e) {
+      let kv = new KeyboardEvent('keydown', {
+        keyCode: capsLockCode
+      })
+      let ku = new KeyboardEvent('keyup')
+      
+      this.dispatchEvent(kv)
+      this.dispatchEvent(ku)
+    }
+  })
+
+}
+task6()
 
 
