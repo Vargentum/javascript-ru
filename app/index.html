@@ -5,83 +5,40 @@
   <!-- some comment -->
   <title>Learn javascript.ru</title>
   <style>
-    #money-before-bar,
-    #money-after-bar {
-      width: 35px;
-      margin: 10px auto 0;
-      background-color: red;
+    .prompt {
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,.3)
     }
-
-    #money-after-bar {
-      background-color: green;
+    .prompt-body {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      width: 350px;
     }
-
-    .money-bar-cell {
-      vertical-align: bottom;
+    .logger {
+      border: 1px solid red;
+      padding: 10px;
     }
-
+    .logger:before {
+      content: 'Logger:';
+      color: red;
+      display: block;
+    }
   </style>
 </head>
 <body>
 
-  <p>Калькулятор процентов, из расчёта 12% годовых.</p>
-  <form name="calculator" _lpchecked="1">
-    <table>
-      <tbody><tr>
-        <td>Сумма</td>
-        <td>
-          <input name="money" type="text" value="">
-        </td>
-      </tr>
-      <tr>
-        <td>Срок в месяцах</td>
-        <td>
-          <select name="months">
-            <option value="3">3 месяцев</option>
-            <option value="6">6 месяцев</option>
-            <option value="12" selected="">1 год</option>
-            <option value="18">1.5 года</option>
-            <option value="24">2 года</option>
-            <option value="30">2.5 года</option>
-            <option value="36">3 года</option>
-            <option value="60">5 лет</option>
-            <option value="120">10 лет</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>С капитализацией</td>
-        <td>
-          <input name="capitalization" type="checkbox">
-        </td>
-      </tr>
-    </tbody></table>
-
-
-  </form>
-
-
-  <table id="diagram">
-    <tbody><tr>
-      <th>Было:</th>
-      <th>Станет:</th>
-    </tr>
-    <tr>
-      <th id="money-before"></th>
-      <th id="money-after"></th>
-    </tr>
-    <tr>
-    <td class="money-bar-cell">
-      <div id="money-before-bar"></div>
-    </td>
-    <td class="money-bar-cell">
-      <div id="money-after-bar"></div>
-    </td>
-  </tr></tbody></table>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="./_useful_functions.js"></script>
-  <script src="./part2/forms/03.form_change_events.js"></script>
+  <script src="./part2/forms/04.submit.js"></script>
 </body>
 </html>
