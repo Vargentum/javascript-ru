@@ -48,13 +48,15 @@ function task1 () {
     }
 
     handleSubmit(e) {
-      this.destroy()
-      this.callback(this.form.elements.text.value)
       e.preventDefault() // no page reloading
+      let val = this.form.elements.text.value
+      if (val.length < 1) return
+      this.destroy()
+      this.callback(val)
     }
 
     makeFocusHelperInput (pos) {
-      let input = `<input type="text" name="focusHelper" />`
+      let input = `<input type="text" name="focusHelper" tabIndex="0" style="opacity: 0" />`
       this.form.insertAdjacentHTML(pos, input)
     }
 
