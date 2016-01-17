@@ -53,7 +53,28 @@ function task1 () {
       e.preventDefault() // no page reloading
     }
 
+    makeFocusHelperInput (pos) {
+      let input = `<input type="text" name="focusHelper" />`
+      this.form.insertAdjacentHTML(pos, input)
+    }
+
+    makeFocusCycle(e) {
+      let elements = $$(this.form.elements)
+      let idx = elements.indexOf(e.target)
+      let isOutsideForm = elem => elem && elem.getAttribute('name') === 'focusHelper'
+
+      if (isOutsideForm(e.relatedTarget) && idx === 0) {
+        _.last(elements).focus()
+      } 
+      else if (isOutsideForm(e.relatedTarget) && idx === elements.length - 1) {
+        _.first(elements).focus()
+      }
+    }
+
     addHandlers() {
+      this.form.addEventListener('blur', e => {
+        this.makeFocusCycle(e)    
+      }, true)
       this.form.addEventListener('submit', e => {
         this.handleSubmit(e)
       })
@@ -78,7 +99,12 @@ function task1 () {
 
       document.body.insertAdjacentHTML('beforeEnd', this.formString)
       this.form = document.getElementById(this.formId)
+      
       this.addHandlers()
+      this.form.elements.text.focus();
+
+      //need for correct blur handling, if target is first / last at page
+      ['beforeBegin', 'afterEnd'].forEach(pos => this.makeFocusHelperInput(pos))
     }
 
     destroy() {
