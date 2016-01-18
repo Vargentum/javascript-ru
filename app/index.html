@@ -5,39 +5,43 @@
   <!-- some comment -->
   <title>Learn javascript.ru</title>
   <style>
-    .prompt {
-      position: fixed;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0,0,0,.3);
-      z-index: 9999;
-    }
-    .prompt-body {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #fff;
-      padding: 20px;
-      width: 350px;
-    }
-    .logger {
+    .menu {
       border: 1px solid red;
-      padding: 10px;
     }
-    .logger:before {
-      content: 'Logger:';
+    .menu.is-open .menu-list {
+      display: block
+    }
+    .menu-list {
+      display: none;
+      padding-left: 10px;
+    }
+
+    .clock-hour:after,
+    .clock-minute:after {
+      content: ':';
+    }
+    .clock-hour {
       color: red;
-      display: block;
     }
+    .clock-minute {
+      color: blue;
+    }
+    .clock-second {
+      color: green;
+    }
+
   </style>
 </head>
 <body>
 
+  <div>
+    <p><time id="clock"></time></p>
+    <button id="clock-start">Start</button>
+    <button id="clock-stop">Stop</button>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="./_useful_functions.js"></script>
-  <script src="./part2/forms/04.submit.js"></script>
+  <script src="./part2/components/01.structure.js"></script>
 </body>
 </html>
