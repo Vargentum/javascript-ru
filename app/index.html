@@ -30,6 +30,23 @@
       color: green;
     }
 
+
+    .voter {
+      padding: 10px;
+      border: 1px solid red;
+    }
+
+    .voter .up,
+    .voter .down {
+      padding: 2px;
+      cursor: pointer;
+      color: red;
+      -webkit-user-select: none;
+    }
+    .voter .up {
+      color: green;
+    }
+
   </style>
 </head>
 <body>
@@ -39,6 +56,10 @@
     <button id="clock-start">Start</button>
     <button id="clock-stop">Stop</button>
   </div>
+
+  <hr>
+
+  <div id="voter"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="./_useful_functions.js"></script>

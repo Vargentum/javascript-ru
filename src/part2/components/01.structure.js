@@ -185,6 +185,7 @@ function task1 () {
 
     this.start = start
     this.stop = stop
+    start()
   }
 
 
@@ -192,8 +193,6 @@ function task1 () {
   let clock = new Clock({
     elem: document.getElementById('clock')
   })
-  clock.start()
-
 
   let start = document.getElementById('clock-start')
   start.onclick = clock.start
@@ -209,6 +208,65 @@ task1()
 
 
 
+
+/* Task 2
+Напишите функцию-конструктор new Voter(options) для голосовалки. Она должна получать элемент в options.elem, в следующей разметке:
+  По клику на + и — число должно увеличиваться или уменьшаться.
+  Публичный метод voter.setVote(vote) должен устанавливать текущее число – значение голоса.
+  Все остальные методы и свойства пусть будут приватными.
+*/
+
+function task2 () {
+  
+  function Voter(options) {
+    let elem = options.elem
+    let elemId = elem.id
+    let $vote = null
+    let vote = 0
+    let html = `<div id="${elemId}" class="voter">
+                 <span class="down">—</span>
+                 <span class="vote">${vote}</span>
+                 <span class="up">+</span>
+               </div>`
+
+    function init() {
+      elem.insertAdjacentHTML('beforeBegin', html)
+      elem.parentElement.removeChild(elem)
+      elem = document.getElementById(elemId)
+
+      $vote = elem.querySelector('.vote')
+      elem.addEventListener('click', function(e) {
+        handleClick(e)
+      })
+    }
+
+    function handleClick (e) {
+      let vote = parseInt($vote.textContent)
+      let isTarget = type => e.target.classList.contains(type)
+
+      if (isTarget('down')) setVote(--vote)
+      else if (isTarget('up')) setVote(++vote)
+      else return
+    }
+
+    function setVote(vote) {
+      $vote.textContent = vote
+    }
+
+
+    this.setVote = setVote
+    init()
+  }
+
+  new Voter({
+    elem: document.getElementById('voter')
+  }).setVote(15)
+
+
+
+
+}
+task2()
 
 
 
