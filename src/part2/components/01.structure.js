@@ -266,7 +266,7 @@ function task2 () {
 
 
 }
-task2()
+// task2()
 
 
 
@@ -274,4 +274,59 @@ task2()
 
 
 
+/*Task 3
 
+Поменяйте стиль ООП в голосовалке, созданной в задаче Голосовалка на прототипный.
+Внешний код, использующий класс Voter, не должен измениться.
+
+*/
+
+function task3 () {
+  
+  function Voter(options) {
+    this.elem = options.elem
+    this.elemId = this.elem.id
+    this.$vote = null
+    this.vote = 0
+    this.html = `<div id="${this.elemId}" class="voter">
+                 <span class="down">—</span>
+                 <span class="vote">${this.vote}</span>
+                 <span class="up">+</span>
+               </div>`
+
+    this.init()
+  }
+
+  Voter.prototype.init = function(){
+    this.elem.insertAdjacentHTML('beforeBegin', this.html)
+    this.elem.parentElement.removeChild(this.elem)
+    this.elem = document.getElementById(this.elemId)
+
+    this.$vote = this.elem.querySelector('.vote')
+    this.elem.addEventListener('click', e => {
+      this.handleClick(e)
+    })
+  };
+
+  Voter.prototype.handleClick = function(e){
+    this.vote = parseInt(this.$vote.textContent)
+    let isTarget = type => e.target.classList.contains(type)
+
+    if (isTarget('down')) this.setVote(--this.vote)
+    else if (isTarget('up')) this.setVote(++this.vote)
+    else return
+  };
+
+
+  Voter.prototype.setVote = function(vote) {
+    this.$vote.textContent = vote
+  }
+
+
+
+  new Voter({
+    elem: document.getElementById('voter')
+  }).setVote(15)
+
+}
+task3()
