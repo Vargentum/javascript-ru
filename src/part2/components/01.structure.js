@@ -282,51 +282,82 @@ function task2 () {
 */
 
 function task3 () {
-  
-  function Voter(options) {
-    this.elem = options.elem
-    this.elemId = this.elem.id
-    this.$vote = null
-    this.vote = 0
-    this.html = `<div id="${this.elemId}" class="voter">
-                 <span class="down">—</span>
-                 <span class="vote">${this.vote}</span>
-                 <span class="up">+</span>
-               </div>`
 
-    this.init()
-  }
-
-  Voter.prototype.init = function(){
-    this.elem.insertAdjacentHTML('beforeBegin', this.html)
-    this.elem.parentElement.removeChild(this.elem)
-    this.elem = document.getElementById(this.elemId)
-
-    this.$vote = this.elem.querySelector('.vote')
-    this.elem.addEventListener('click', e => {
-      this.handleClick(e)
+  const Voter = stampit()
+    .props({
+      elem: '',
+      id: _.uniqueId('voter-')
     })
-  };
+    .methods({
+      _replaceHTML: function(elem) {
+        elem.insertAdjacentHTML('beforeBegin', this.html)
+        elem.parentElement.removeChild(this.elem)
+        elem = document.getElementById(this.id)
+        return elem
+      },
+      _handleClick: function(e) {
+        let vote = parseInt(this.$vote.textContent)
+        let isTarget = type => e.target.classList.contains(type)
+        if (isTarget('down')) this.setVote(--vote)
+        else if (isTarget('up')) this.setVote(++vote)
+        else return
+      },
+      setVote: function(vote) {
+        this.$vote.textContent = vote
+      }
+    })
+    .init(function () {
+      this.html = `<div id="${this.id}" class="voter">
+                     <span class="down">—</span>
+                     <span class="vote">0</span>
+                     <span class="up">+</span>
+                   </div>`
+      let elem = this._replaceHTML(this.elem)
+      this.$vote = elem.querySelector('.vote')
+      
+      elem.addEventListener('click', e => {
+        this._handleClick(e)
+      })
 
-  Voter.prototype.handleClick = function(e){
-    this.vote = parseInt(this.$vote.textContent)
-    let isTarget = type => e.target.classList.contains(type)
+      return this
+    })
+  
 
-    if (isTarget('down')) this.setVote(--this.vote)
-    else if (isTarget('up')) this.setVote(++this.vote)
-    else return
-  };
-
-
-  Voter.prototype.setVote = function(vote) {
-    this.$vote.textContent = vote
-  }
-
-
-
-  new Voter({
+  let voter = Voter({
     elem: document.getElementById('voter')
-  }).setVote(15)
+  })
+  voter.setVote(15)
+  
+
+  /*
+  Task 4:
+  
+  Создайте функцию-конструктор StepVoter, 
+  которая наследует от голосовалки, созданной в задаче Голосовалка в прототипном стиле ООП
+  и добавляет голосовалке опцию options.step, которая задаёт «шаг» голоса.
+  */
+
+  const StepVoter = stampit()
+    .props({
+      step: 1
+    })
+    .methods({
+      _handleClick: function() {
+        let vote = parseInt(this.$vote.textContent)
+        let isTarget = type => e.target.classList.contains(type)
+        debugger
+        if (isTarget('down')) this.setVote(vote + step)
+        else if (isTarget('up')) this.setVote(vote - step)
+        else return
+      }
+    })
+    .compose(Voter)
+
+
+  let stepVoter = StepVoter({
+    elem: document.getElementById('step-voter'),
+    step: 25
+  })
 
 }
 task3()
