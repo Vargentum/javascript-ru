@@ -4,67 +4,14 @@
   <meta charset="UTF-8">
   <!-- some comment -->
   <title>Learn javascript.ru</title>
-  <style>
-    .menu {
-      border: 1px solid red;
-    }
-    .menu.is-open .menu-list {
-      display: block
-    }
-    .menu-list {
-      display: none;
-      padding-left: 10px;
-    }
 
-    .clock-hour:after,
-    .clock-minute:after {
-      content: ':';
-    }
-    .clock-hour {
-      color: red;
-    }
-    .clock-minute {
-      color: blue;
-    }
-    .clock-second {
-      color: green;
-    }
-
-
-    .voter {
-      padding: 10px;
-      border: 1px solid red;
-    }
-
-    .voter .up,
-    .voter .down {
-      padding: 2px;
-      cursor: pointer;
-      color: red;
-      -webkit-user-select: none;
-    }
-    .voter .up {
-      color: green;
-    }
-
-  </style>
 </head>
 <body>
 
-  <div>
-    <p><time id="clock"></time></p>
-    <button id="clock-start">Start</button>
-    <button id="clock-stop">Stop</button>
-  </div>
-
-  <hr>
-
-  <div id="voter"></div>
-  <div id="step-voter"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stampit/2.1.0/stampit.min.js"></script>
   <script src="./_useful_functions.js"></script>
-  <script src="./part2/components/01.structure.js"></script>
+  <script src="./part2/components/02.templating.js"></script>
 </body>
 </html>
