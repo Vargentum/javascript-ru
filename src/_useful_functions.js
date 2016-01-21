@@ -1,6 +1,6 @@
 /*Useful functions*/
 
-const $ = (query="*") => Array.prototype.slice.call(document.querySelectorAll(query))
+const $ = (query="*", elem=document) => Array.prototype.slice.call(elem.querySelectorAll(query))
 const $$ = (array=[]) => Array.prototype.slice.call(array)
 
 
