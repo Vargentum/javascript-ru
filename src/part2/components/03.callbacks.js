@@ -245,7 +245,93 @@ task2()
 
 function task3 () {
   
+  const Select = stampit()
+    .refs({
+      element: null,
+      options: []
+    })
+    .static({
+      template: 
+        `<span class="select-current"><%= current %></span>
+          <ul class="select-items">
+            <% options.forEach(option => { %>
+              <li class="select-item"><%= option %></li>
+            <% }) %>
+          </li>`
+    })
+    .methods({
+      render: function() {
+        let tpl = _.template(Select.template)({
+          current: this.options[0],
+          options: this.options
+        })
 
+        this.element.insertAdjacentHTML('afterBegin', tpl)
+        this.element.classList.add('select')
+      },
+      open: function() {
+        this.element.classList.add('is-opened')
+      },
+      close: function() {
+        this.element.classList.remove('is-opened')
+      },
+      setItem: function(txt) {
+        let current = this.element.querySelector('.select-current')
+        current.textContent = txt
+
+        let evt = new CustomEvent('select', {
+          bubbles: true,
+          detail: txt
+        })
+
+        current.dispatchEvent(evt)
+      }
+    })
+    .init(function () {
+      let isHasClass = (elem, cls) => elem.classList.contains(cls)
+
+      this.render()
+
+      document.body.addEventListener('click', (e) => {
+        let isTargetClass = _.partial(isHasClass, e.target)
+        this.close()
+
+        if (isTargetClass('select-current')) {
+          this.open()
+        }
+        else if (isTargetClass('select-item')) {
+          this.setItem(e.target.textContent)
+        }
+      })
+    })
+
+
+
+
+  let s1 = Select({
+    element: document.getElementById('select-1'),
+    options: [
+      'Птицы',
+      'Рыбы',
+      'Звери',
+      'Динозавры',
+      'Одноклеточные'
+    ]
+  })
+
+  let s2 = Select({
+    element: document.getElementById('select-2'),
+    options: [
+      'Плотоядные',
+      'Травоядные',
+      'Всеядные'
+    ]
+  })
+
+  document.addEventListener('select', (e) => {
+    document.getElementById('select-value')
+            .textContent = `Last selected value is ${e.detail}`
+  })
 
 }
 task3()

@@ -7,8 +7,42 @@
 
   <style>
 
+    * {
+      box-sizing: border-box;
+    }
+
     .selected {
       background-color: #999
+    }
+
+    .select {
+      position: relative;
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    .select-current {
+      padding: 2px 8px;
+      border: 1px solid #999;
+    }
+
+    .select-items {
+      list-style-type: none;
+      position: absolute;
+      top: 100%;
+      left: -9999px;
+      margin:0;
+      padding:0;
+    }
+
+    .select.is-opened .select-items {
+      left: 0;
+    }
+
+    .select-item {
+      border: 1px solid #aaa;
+      padding: 2px 8px;
+      background-color: #fff;
     }
 
   </style>
@@ -30,6 +64,12 @@
       <li>Кролик. Просто кролик.</li>
     </ul>
   </div>
+
+
+
+  <div id="select-value"></div>
+  <div id="select-1"></div>
+  <div id="select-2"></div>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
