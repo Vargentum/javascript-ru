@@ -5,13 +5,36 @@
   <!-- some comment -->
   <title>Learn javascript.ru</title>
 
+  <style>
+
+    .selected {
+      background-color: #999
+    }
+
+  </style>
 </head>
 <body>
+
+  <div id="voter"></div>
+
+  
+  <div>
+    <p>Клик на элементе выделяет только его. </p>
+    <p>Ctrl(Cmd)+Клик добавляет/убирает элемент из выделенных. </p>
+    <p>Shift+Клик добавляет промежуток от последнего кликнутого к выделению. </p>
+    <ul id="list">
+      <li>Кристофер Робин</li>
+      <li>Винни-Пух</li>
+      <li>Ослик Иа</li>
+      <li>Мудрая Сова</li>
+      <li>Кролик. Просто кролик.</li>
+    </ul>
+  </div>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stampit/2.1.0/stampit.min.js"></script>
   <script src="./_useful_functions.js"></script>
-  <script src="./part2/components/02.templating.js"></script>
+  <script src="./part2/components/03.callbacks.js"></script>
 </body>
 </html>
