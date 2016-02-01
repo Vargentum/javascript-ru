@@ -111,10 +111,10 @@ function example2 () {
     }
 
 
-    test('Prototypes with IIFE.', function () { 
-      equal(lightbulb.toggle(), true, 'Lightbulb turns on.'); 
-      equal(lightbulb.toggle(), false 'Lightbulb turns off.');
-    });
+    // test('Prototypes with IIFE.', function () { 
+    //   equal(lightbulb.toggle(), true, 'Lightbulb turns on.')
+    //   equal(lightbulb.toggle(), false 'Lightbulb turns off.')
+    // });
   }())
     
 
