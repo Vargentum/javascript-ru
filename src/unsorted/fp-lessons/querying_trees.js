@@ -24,7 +24,7 @@ function task17 () {
   })
 
 }
-task17()
+// task17()
 
 
 function task18 () {
@@ -34,4 +34,35 @@ function task18 () {
     .reduce((prev, next) => calcSize(next) > calcSize(prev) ? next : prev)
     .map(art => art.url)
 }
-task18()
+// task18()
+
+
+function task19 () {
+  var videos = [
+    {
+      "id": 65432445,
+      "title": "The Chamber"
+    },
+    {
+      "id": 675465,
+      "title": "Fracture"
+    },
+    {
+      "id": 70111470,
+      "title": "Die Hard"
+    },
+    {
+      "id": 654356453,
+      "title": "Bad Boys"
+    }
+  ];
+
+  let a = videos
+    .reduce((prev, {id, title}) => {
+      prev[id] = title
+      return prev
+    }, {})
+
+  console.log([a])
+}
+task19()
